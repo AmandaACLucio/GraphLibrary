@@ -8,7 +8,8 @@
             //"command":"C:\\MinGW\\bin\\g++.exe",
             "args": [
                 "-g",
-                "source\\GraphLibrary.cpp",
+                "source\\GraphLibraryTP1.cpp",
+                "source\\GraphLibraryTP2.cpp",
                 "source\\Estrutura_de_dados\\Lista_adjacencia.cpp",
                 "source\\Estrutura_de_dados\\Matriz_adjacencia.cpp",
                 "source\\Estrutura_de_dados\\Vetor_adjacencia.cpp",

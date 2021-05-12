@@ -24,9 +24,8 @@ class Grafo
     int estruturaEscolhida;
     EstruturaDeDados *estruturaGrafo;   
   
-
+    //TP1
     Grafo(string caminho, int estrutura);
-    Grafo(int estrutura, bool direcao, bool peso);
     void Entrada(string fileEntrada);
     void Saida(string fileSaida);
     vector<vector<int>> BFS(int raiz);
@@ -36,5 +35,12 @@ class Grafo
     void Diametro();
     vector<vector<int>> ComponentesConexas(string filesaida="temp.txt");
     bool MesmaComponente(int nodeUm, int nodeDois);
+
+    //TP2
+    void Entrada(string fileEntrada, bool peso);
+    vector<int> Dijkstra(int nodeUm, int nodeDois); //caminho mínimo
+    int Distancia(int nodeUm, int nodeDois, bool peso); //usando Dijkstra
+    void MST(); //escrita no formato de grafo em um arquivo de saída
+    int Excentricidadeint(int nodeUm, int nodeDois);
 
 };
