@@ -14,6 +14,8 @@ class EstruturaDeDados{
     virtual void setSize(int newSizeVector)=0;
     virtual bool add(int valor1, int valor2)=0;
     virtual void show()=0;
+    void addVertice();
+    bool addAresta(int valor1, int valor2);
 
 };
 

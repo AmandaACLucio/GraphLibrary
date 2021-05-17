@@ -23,19 +23,24 @@ Grafo::Grafo(string caminho, int estrutura){
 
     //inserir caminho na construção do grafo
     //1- lista 2-vetor 3-matriz
-
+    numberNodes = 0;
+    hasNode;
+    cout<<"Construtor"<<endl;
     estruturaEscolhida = estrutura;
     if(estrutura==1){
         estruturaGrafo = new VectorListaAdjacencia();
-        Entrada(caminho);
+        //Entrada(caminho);
+        EntradaMax(caminho);
 
     }else if(estrutura==2){
         estruturaGrafo = new VectorVetorAdjacencia();
-        Entrada(caminho);
+        //Entrada(caminho);
+        EntradaMax(caminho);
 
     }else if(estrutura==3){
         estruturaGrafo = new MatrizAdjacencia();
-        Entrada(caminho);
+        //Entrada(caminho);
+        EntradaMax(caminho);
     }
 }
 
@@ -73,6 +78,67 @@ void Grafo::Entrada(string filename)
         cout << "ERRO: arquivo não foi aberto ou não existe" << endl;
     }
 
+}
+
+void Grafo::popularMax(int tamanho){
+    cout<<"Entrou no popular"<<endl;
+    cout<<"Tamanho dos nodes: "<< numberNodes <<"Tamanho solicitado: "<<tamanho<<endl;
+    int valor = tamanho - numberNodes;
+    for (int i = 1; i <= valor; i++)
+    {
+        cout<<"Interacao: "<<i<<endl;
+        hasNode.push_back(false);
+        //ListaAdjacencia novo;
+        //listaAdj.push_back(novo);
+    }
+    numberNodes = tamanho;
+}
+
+void Grafo::EntradaMax(string filename)
+{
+    FILE *file;
+    ListaAdjacencia listaAdj;
+    file = fopen("max.txt","rt");
+    int n1;
+    hasNode.push_back(false);
+    listaAdj.add(4);
+    
+    if (file==NULL)
+    {
+        printf("ERRO !!");
+        exit(0);
+    }
+    
+    // add primeiro vertice
+    fscanf(file,"%d ", &n1);
+    printf("%d \n",n1);
+    popularMax(n1);
+    hasNode.at(n1) = true;
+    getchar();
+    //hasNode.at(n2) = true;
+    
+    while (!feof(file))    // fecha quando os arquivos acabarem
+    {   
+        int temp[2];
+        float peso;
+        fscanf(file,"%d%d%f", &temp[0],&temp[1],peso);
+
+        printf("\n Aresta entre :%d %d, com peso %f",temp[0], temp[1], peso); 
+        getchar();
+        for (int i = 0; i <= 1; i++)
+        {
+            if (numberNodes < temp[i])
+            {
+                popularMax(temp[i]);
+            }
+            if (hasNode.at(temp[i])) //verificar se vertice o vertice existe
+            {  
+                cout<<"n2: "<<temp[i]<<" Esxiste "<<endl;    
+            }else hasNode.at(temp[i]) = true;
+            //nodes.push_back(temp[i]);  
+        }
+        // criar aresta entre n2 e n3 
+    }
 }
 
 void Grafo::Saida(string fileSaida)
@@ -122,7 +188,7 @@ void Grafo::Saida(string fileSaida)
 }
 
 vector<vector<int>> Grafo::BFS(int raiz)
-{
+{/*
     vector<bool> verticesMarcados;
     vector<int> fila, marcadosList, pai, nivel;
 
@@ -172,11 +238,11 @@ vector<vector<int>> Grafo::BFS(int raiz)
     retorno.push_back(marcadosList);
 
     return retorno;
-
+*/
 }
 
 vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
-{
+{/*
     printf("Entrando na DFS\n");
     int nivel = 0;
     stack<int>  pilhaDfs; // salvar sequencia da DFS
@@ -224,7 +290,7 @@ vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
             nivel--;
             achou = false;
         }
-    }
+    }*/
 }
 
 int Grafo::Grau(int vertice)
@@ -338,7 +404,40 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 
 int main(){
 
-/*     int estrutura = 1;
+    VectorDeLista vetList;
+    VectorDeVetor vetVet;
+    MatrizDeMatriz matmat;
+
+    cout<<"Passou antes do addVertice "<<endl;
+
+    vetVet.addVertice();
+    vetVet.addVertice();
+    vetVet.addVertice();
+    vetVet.addVertice();
+    vetVet.addVertice();
+    vetVet.addVertice();
+    vetVet.addVertice();
+    vetVet.addVertice();
+
+    vetVet.show();
+
+    cout<<"Passou antes do addAresta "<<endl;
+
+    vetVet.addAresta(1,2);
+    vetVet.addAresta(3,4);
+    vetVet.addAresta(3,1);
+    vetVet.addAresta(3,1);
+    vetVet.addAresta(3,2);
+    
+    vetVet.show();
+
+
+
+/*
+    Grafo grafo("dsf",4);
+
+/*
+     int estrutura = 1;
     clock_t inicio, fim;
     inicio= clock();
     Grafo teste("Dados/grafo_1.txt", estrutura);

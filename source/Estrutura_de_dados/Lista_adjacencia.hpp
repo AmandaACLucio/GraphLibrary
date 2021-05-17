@@ -26,9 +26,9 @@ class NodeList
 class ListaAdjacencia
 {
     private:
-        /* data */
         NodeList* top;
         NodeList* last;
+        int sizeLista;
 
     public:
 
@@ -53,6 +53,40 @@ class VectorListaAdjacencia: public EstruturaDeDados
     public:
         void setSize(int newSizeVector);
         bool add(int valor1, int valor2);
+        void show();
+};
+
+// Nova implementacao => Max
+class VectorDeLista: public EstruturaDeDados
+{    
+    private:
+        vector<ListaAdjacencia> vetorDeListas;
+        int sizeVetorDeListas;
+
+    public:
+        void setSize(int newSizeVector);
+        bool add(int valor1, int valor2);
+        VectorDeLista();
+        void addVertice();
+        bool addAresta(int valor1, int valor2);
+        void show();
+};
+
+// Nova implementacao => Max
+class ListaDeLista
+{    
+    private:
+        ListaAdjacencia listaDeListas;
+        int sizeListaDeListas;
+        ListaAdjacencia* top;
+        ListaAdjacencia* last;
+
+    public:
+        void setSize(int newSizeVector);
+        bool add(int valor1, int valor2);
+        ListaDeLista();
+        void addVertice();
+        bool addAresta(int valor1, int valor2);
         void show();
 };
 

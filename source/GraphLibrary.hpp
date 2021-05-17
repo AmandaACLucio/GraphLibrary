@@ -17,7 +17,7 @@ class Grafo
 
     int numberNodes;
     int numberArestas;
-    
+    vector<bool> hasNode;
     map<int, int> graus;
 
     //1- lista 2-vetor 3-matriz
@@ -27,6 +27,8 @@ class Grafo
     //TP1
     Grafo(string caminho, int estrutura);
     void Entrada(string fileEntrada);
+    void popularMax(int tamanho);
+    void EntradaMax(string fileEntrada);
     void Saida(string fileSaida);
     vector<vector<int>> BFS(int raiz);
     vector<vector<int>> DFS(int raiz);

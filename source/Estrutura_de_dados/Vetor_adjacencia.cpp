@@ -66,11 +66,15 @@ int VetorAdjacencia::searchPositionInsert(int node){
 }
 
 void VetorAdjacencia::show(){
+    cout<<" = (";
+
     for (int i = 0; i < nodes.size(); i++)
     {
-        printf("%d\n",nodes[i]);
+        cout<<nodes.at(i)<<", ";
         /* code */
     }
+    cout<<")";
+
 }
 
 void VectorVetorAdjacencia::setSize(int newSizeVector){
@@ -91,3 +95,36 @@ void VectorVetorAdjacencia::show(){
         vetorDeVetores.at(i).show();
     }
 }
+
+//************************************* Vector de Vector ***************************
+VectorDeVetor::VectorDeVetor(){
+    sizeVetorDeVetor = 0;
+}
+
+void VectorDeVetor::addVertice(){
+    VetorAdjacencia vectemp;
+    vetorDeVetores.push_back(vectemp);
+    sizeVetorDeVetor++;
+}
+
+bool VectorDeVetor::addAresta(int valor1, int valor2){
+    vetorDeVetores.at(valor1).add(valor2);
+}
+
+void VectorDeVetor::show(){
+    for (int i = 0; i < sizeVetorDeVetor; i++)
+    {
+        cout<<endl<<"Vector: "<<i;
+        vetorDeVetores.at(i).show();
+    }
+    
+}
+
+//nao e usado
+void VectorDeVetor::setSize(int newSizeVector){
+}
+
+bool VectorDeVetor::add(int valor1, int valor2){
+    return 0;
+}
+

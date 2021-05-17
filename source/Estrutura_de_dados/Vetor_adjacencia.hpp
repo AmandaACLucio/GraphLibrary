@@ -35,6 +35,22 @@ class VectorVetorAdjacencia: public EstruturaDeDados
         void show();
 };
 
+// Nova implementacao => Max
+class VectorDeVetor: public EstruturaDeDados
+{    
+    private:
+        vector<VetorAdjacencia> vetorDeVetores;
+        int sizeVetorDeVetor;
+
+    public:
+        VectorDeVetor();
+        void setSize(int newSizeVector);// nao e usado
+        bool add(int valor1, int valor2);// nao e usado
+        void show();
+        void addVertice();
+        bool addAresta(int valor1, int valor2);
+};
+
 
 
 #endif
