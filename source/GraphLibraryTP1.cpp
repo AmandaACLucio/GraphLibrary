@@ -22,6 +22,8 @@ using namespace std;
 Grafo::Grafo(string caminho, int estrutura, bool newDirecionado, bool newPeso){
 
     //1- lista 2-vetor 3-matriz
+    direcionado = newDirecionado;
+    peso = newPeso;
     numberNodes = 0;
     hasNode;
     cout<<"Construtor"<<endl;
@@ -37,7 +39,7 @@ void Grafo::Entrada(string filename)
 {
     const char * filenameChar = filename.c_str();
     ifstream arquivoEntrada(filenameChar); // Abri arquivo para leitura
-    int quantidadeDeVertices, valorUm, valorDois;
+    int quantidadeDeVertices, valorUm, valorDois, newpeso;
     bool realizouAdicao;
 
     if (arquivoEntrada.is_open()) {
@@ -46,26 +48,38 @@ void Grafo::Entrada(string filename)
 
         estruturaGrafo->setSize(quantidadeDeVertices);
         
-        while(arquivoEntrada>>valorUm>>valorDois){
-            
-            if(valorUm!=valorDois){
+        if (peso) {
+            while(arquivoEntrada>>valorUm>>valorDois>>newpeso){
+                
+                if(valorUm!=valorDois){
 
-                //se fizer a adição teremos um true
-                if (peso)
-                {
-                    /* code */
-                }
-                
-                realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois);
-    	        if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm);
-                
-                if(realizouAdicao){
-                    numberArestas+=1;
-                    graus[valorUm]=graus[valorUm]+1;
-                    graus[valorDois]=graus[valorDois]+1;
-                    
+                    //se fizer a adição teremos um true
+                    realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois, newpeso);
+                    if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm, newpeso); 
+
+                    if(realizouAdicao){
+                        numberArestas+=1;
+                        graus[valorUm]=graus[valorUm]+1;
+                        graus[valorDois]=graus[valorDois]+1;
+                    }
                 }
             }                         
+        }else{
+            while(arquivoEntrada>>valorUm>>valorDois){
+                
+                if(valorUm!=valorDois){
+
+                    //se fizer a adição teremos um true
+                    realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois);
+                    if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm); 
+
+                    if(realizouAdicao){
+                        numberArestas+=1;
+                        graus[valorUm]=graus[valorUm]+1;
+                        graus[valorDois]=graus[valorDois]+1;
+                    }
+                }
+            }
         }
         arquivoEntrada.close();
     }else{
@@ -339,7 +353,7 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 int main(){
 
 
-    Grafo grafo("dsf",4,false,false);
+    Grafo grafo("max.txt",4,true,false);
 
 /*
      int estrutura = 1;
