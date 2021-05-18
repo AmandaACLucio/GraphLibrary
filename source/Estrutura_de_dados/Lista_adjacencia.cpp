@@ -146,7 +146,7 @@ NodeList* ListaAdjacencia::getTop(){
 //Pra se tornar mais eficiente ele deveria modificar o vetor de lista, custando menos memoria assim
 
 void VectorListaAdjacencia::setSize(int newSizeVector){
-    sizeLista = newSizeVector; //size será a quantidade de nós
+    size = newSizeVector; //size será a quantidade de nós
     vetorDeListas = Popular(vetorDeListas,0 ,newSizeVector);
 }
 
@@ -163,7 +163,7 @@ bool VectorListaAdjacencia::addAresta(int valor1, int valor2, float weight){
 }
 
 void VectorListaAdjacencia::show(){
-    for(int i = 0; i<sizeLista; i++){
+    for(int i = 0; i<size; i++){
         cout<<endl<<"lista "<<i<<" :";
         vetorDeListas.at(i).show();
     }

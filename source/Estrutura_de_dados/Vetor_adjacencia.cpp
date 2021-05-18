@@ -9,8 +9,15 @@ using namespace std;
 VetorAdjacencia::VetorAdjacencia(){
     size = 0;
 }
+
 VetorAdjacencia::VetorAdjacencia(int node){
     nodes.push_back(node);
+    size = 1;
+}
+
+VetorAdjacencia::VetorAdjacencia(int node, int peso){
+    int no[] = {node, peso};
+    nodes.push_back(no);
     size = 1;
 }
 
@@ -77,7 +84,7 @@ void VetorAdjacencia::show(){
 }
 
 void VectorVetorAdjacencia::setSize(int newSizeVector){
-    sizeVec = newSizeVector;//size será a quantidade de nós
+    size = newSizeVector;//size será a quantidade de nós
     vetorDeVetores = Popular(vetorDeVetores,0 ,newSizeVector);
 }
 
@@ -94,7 +101,7 @@ bool VectorVetorAdjacencia::addAresta(int valor1, int valor2, float weight){
 }
 
 void VectorVetorAdjacencia::show(){
-    for(int i = 0; i<sizeVec; i++){
+    for(int i = 0; i<size; i++){
         cout<<endl<<"vetor de "<<i;
         vetorDeVetores.at(i).show();
     }

@@ -12,7 +12,8 @@ class MatrizAdjacencia: public EstruturaDeDados
 {
     //size_t numberNodes;
     bool** matriz;
-
+    bool init;
+    
     public:
         MatrizAdjacencia();
         MatrizAdjacencia(int numeroVertices);

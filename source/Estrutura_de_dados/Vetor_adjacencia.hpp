@@ -17,6 +17,7 @@ class VetorAdjacencia
     public:
         VetorAdjacencia();
         VetorAdjacencia(int node);
+        VetorAdjacencia(int node, int peso);
         bool add(int node);
         bool search(int node);
         int searchPositionInsert(int node);
@@ -28,7 +29,6 @@ class VectorVetorAdjacencia: public EstruturaDeDados
 {    
     private:
         vector<VetorAdjacencia> vetorDeVetores;
-        int sizeVec;
     public:
         void setSize(int newSizeVector);
         bool addAresta(int valor1, int valor2);

@@ -48,7 +48,6 @@ class VectorListaAdjacencia: public EstruturaDeDados
 {    
     private:
         vector<ListaAdjacencia> vetorDeListas;
-        int sizeLista;
 
     public:
         //VectorListaAdjacencia(int newSizeVector);
