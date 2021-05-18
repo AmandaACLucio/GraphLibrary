@@ -20,7 +20,16 @@ void MatrizAdjacencia::setSize(int numeroVertices){
     }
 }
 
-bool MatrizAdjacencia::add(int verticeUm, int verticeDois){
+bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois){
+    if(matriz[verticeUm][verticeDois]==false && matriz[verticeDois][verticeUm]==false){
+        matriz[verticeUm][verticeDois]=true;
+        matriz[verticeDois][verticeUm]=true;
+        return true;
+    }
+    return false;       
+}
+
+bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois, float weight){
     if(matriz[verticeUm][verticeDois]==false && matriz[verticeDois][verticeUm]==false){
         matriz[verticeUm][verticeDois]=true;
         matriz[verticeDois][verticeUm]=true;
@@ -37,3 +46,6 @@ void MatrizAdjacencia::show(){
         cout<<endl;
     }    
 }
+
+
+        

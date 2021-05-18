@@ -14,26 +14,13 @@ class MatrizAdjacencia: public EstruturaDeDados
     bool** matriz;
 
     public:
-        MatrizAdjacencia();   
+        MatrizAdjacencia();
+        MatrizAdjacencia(int numeroVertices);
         void setSize(int numeroVertices);   
-        bool add(int verticeUm, int verticeDois);
+        bool addAresta(int verticeUm, int verticeDois);
+        bool addAresta(int valor1, int valor2, float weight);
         void show();
-        void addVertice();// nao e usado
-        bool addAresta(int valor1, int valor2);// nao e usado
-};
-
-class MatrizDeMatriz: public EstruturaDeDados
-{
-    //size_t numberNodes;
-    bool** matriz;
-
-    public:
-        MatrizDeMatriz();   
-        void setSize(int numeroVertices);   
-        bool add(int verticeUm, int verticeDois);
-        void show();
-        void addVertice();
-        bool addAresta(int valor1, int valor2);
 };
 
 #endif
+

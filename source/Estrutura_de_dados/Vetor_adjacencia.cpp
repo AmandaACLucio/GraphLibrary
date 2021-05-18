@@ -70,61 +70,32 @@ void VetorAdjacencia::show(){
 
     for (int i = 0; i < nodes.size(); i++)
     {
-        cout<<nodes.at(i)<<", ";
+        cout<<nodes.at(i)<<" Peso-> "<<", ";
         /* code */
     }
     cout<<")";
-
 }
 
 void VectorVetorAdjacencia::setSize(int newSizeVector){
-    size = newSizeVector;//size será a quantidade de nós
+    sizeVec = newSizeVector;//size será a quantidade de nós
     vetorDeVetores = Popular(vetorDeVetores,0 ,newSizeVector);
 }
 
-bool VectorVetorAdjacencia::add(int valor1, int valor2){
+bool VectorVetorAdjacencia::addAresta(int valor1, int valor2){
     bool resposta; //precisa setar o tamanho antes
     resposta = vetorDeVetores.at(valor1).add(valor2);
-    vetorDeVetores.at(valor2).add(valor1);
+    return resposta;
+}
+
+bool VectorVetorAdjacencia::addAresta(int valor1, int valor2, float weight){
+    bool resposta; //precisa setar o tamanho antes
+    resposta = vetorDeVetores.at(valor1).add(valor2);
     return resposta;
 }
 
 void VectorVetorAdjacencia::show(){
-    for(int i; i<vetorDeVetores.size(); i++){
-        cout<<"vetor de "<<i<<endl;
+    for(int i = 0; i<sizeVec; i++){
+        cout<<endl<<"vetor de "<<i;
         vetorDeVetores.at(i).show();
     }
 }
-
-//************************************* Vector de Vector ***************************
-VectorDeVetor::VectorDeVetor(){
-    sizeVetorDeVetor = 0;
-}
-
-void VectorDeVetor::addVertice(){
-    VetorAdjacencia vectemp;
-    vetorDeVetores.push_back(vectemp);
-    sizeVetorDeVetor++;
-}
-
-bool VectorDeVetor::addAresta(int valor1, int valor2){
-    vetorDeVetores.at(valor1).add(valor2);
-}
-
-void VectorDeVetor::show(){
-    for (int i = 0; i < sizeVetorDeVetor; i++)
-    {
-        cout<<endl<<"Vector: "<<i;
-        vetorDeVetores.at(i).show();
-    }
-    
-}
-
-//nao e usado
-void VectorDeVetor::setSize(int newSizeVector){
-}
-
-bool VectorDeVetor::add(int valor1, int valor2){
-    return 0;
-}
-

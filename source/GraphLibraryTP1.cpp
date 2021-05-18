@@ -62,7 +62,7 @@ void Grafo::Entrada(string filename)
             if(valorUm!=valorDois){
 
                 //se fizer a adição teremos um true
-                realizouAdicao = estruturaGrafo->add(valorUm, valorDois);
+                realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois);
 
                 if(realizouAdicao){
 
@@ -88,7 +88,7 @@ void Grafo::popularMax(int tamanho){
     {
         cout<<"Interacao: "<<i<<endl;
         hasNode.push_back(false);
-        //ListaAdjacencia novo;
+        //estruturaGrafo->addVertice();
         //listaAdj.push_back(novo);
     }
     numberNodes = tamanho;
@@ -97,11 +97,9 @@ void Grafo::popularMax(int tamanho){
 void Grafo::EntradaMax(string filename)
 {
     FILE *file;
-    ListaAdjacencia listaAdj;
     file = fopen("max.txt","rt");
     int n1;
     hasNode.push_back(false);
-    listaAdj.add(4);
     
     if (file==NULL)
     {
@@ -404,32 +402,22 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 
 int main(){
 
-    VectorDeLista vetList;
-    VectorDeVetor vetVet;
-    MatrizDeMatriz matmat;
+    VectorVetorAdjacencia vetList;
 
-    cout<<"Passou antes do addVertice "<<endl;
+    vetList.setSize(100);
 
-    vetVet.addVertice();
-    vetVet.addVertice();
-    vetVet.addVertice();
-    vetVet.addVertice();
-    vetVet.addVertice();
-    vetVet.addVertice();
-    vetVet.addVertice();
-    vetVet.addVertice();
+    vetList.addAresta(1,2, 5.22);
+    vetList.addAresta(3,4, 4.78);
+    vetList.addAresta(3,1, 7.625);
+    vetList.addAresta(3,1, 1.45);
+    vetList.addAresta(3,2, 4.78);
+    vetList.addAresta(7,5, 4.78);
+    vetList.addAresta(6,1, 4.78);
 
-    vetVet.show();
+    cout<<"Antes do show"<<endl;
+    vetList.show();
+    cout<<"Despois do show"<<endl;
 
-    cout<<"Passou antes do addAresta "<<endl;
-
-    vetVet.addAresta(1,2);
-    vetVet.addAresta(3,4);
-    vetVet.addAresta(3,1);
-    vetVet.addAresta(3,1);
-    vetVet.addAresta(3,2);
-    
-    vetVet.show();
 
 
 

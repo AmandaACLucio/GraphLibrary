@@ -9,8 +9,8 @@
                 "C:\\MinGW\\lib\\gcc\\mingw32\\9.2.0\\include\\c++"],    
             "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
             "windowsSdkVersion": "10.0.17134.0",
-            "compilerPath": "C:\\mingw64\\bin\\gcc.exe",
-            //"compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+            //"compilerPath": "C:\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"

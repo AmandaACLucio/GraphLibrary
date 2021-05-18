@@ -14,9 +14,10 @@ class NodeList
         //NodeList* prior;
         NodeList* next;
         int data;
-
+        float weight;
 
         NodeList(int dataa);
+        NodeList(int dataa, float weight);
         void set(int i);
         int get();
         NodeList* get_next();        
@@ -34,60 +35,30 @@ class ListaAdjacencia
 
         ListaAdjacencia();
         ListaAdjacencia(int node);
-        bool add(int data);        
-        void remove();
+        bool add(int data); 
         void show();
         bool search(int i);
         int size();
         NodeList* getTop();
         bool sortedInsert(int val);
-
+        bool sortedInsert(int val, float newWeight);
 };
-
 
 class VectorListaAdjacencia: public EstruturaDeDados
 {    
     private:
         vector<ListaAdjacencia> vetorDeListas;
+        int sizeLista;
 
     public:
+        //VectorListaAdjacencia(int newSizeVector);
         void setSize(int newSizeVector);
-        bool add(int valor1, int valor2);
-        void show();
-};
-
-// Nova implementacao => Max
-class VectorDeLista: public EstruturaDeDados
-{    
-    private:
-        vector<ListaAdjacencia> vetorDeListas;
-        int sizeVetorDeListas;
-
-    public:
-        void setSize(int newSizeVector);
-        bool add(int valor1, int valor2);
-        VectorDeLista();
-        void addVertice();
         bool addAresta(int valor1, int valor2);
+        bool addAresta(int valor1, int valor2, float weight);
         void show();
 };
-
-// Nova implementacao => Max
-class ListaDeLista
-{    
-    private:
-        ListaAdjacencia listaDeListas;
-        int sizeListaDeListas;
-        ListaAdjacencia* top;
-        ListaAdjacencia* last;
-
-    public:
-        void setSize(int newSizeVector);
-        bool add(int valor1, int valor2);
-        ListaDeLista();
-        void addVertice();
-        bool addAresta(int valor1, int valor2);
-        void show();
-};
-
 #endif
+
+
+
+
