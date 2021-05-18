@@ -19,16 +19,17 @@ class Grafo
     int numberArestas;
     vector<bool> hasNode;
     map<int, int> graus;
+    bool direcionado;
+    bool peso;
 
     //1- lista 2-vetor 3-matriz
     int estruturaEscolhida;
     EstruturaDeDados *estruturaGrafo;   
   
     //TP1
-    Grafo(string caminho, int estrutura);
+    Grafo(string caminho, int estrutura, bool newDirecionado, bool newPeso);
     void Entrada(string fileEntrada);
-    void popularMax(int tamanho);
-    void EntradaMax(string fileEntrada);
+
     void Saida(string fileSaida);
     vector<vector<int>> BFS(int raiz);
     vector<vector<int>> DFS(int raiz);

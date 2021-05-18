@@ -19,29 +19,18 @@
 
 using namespace std;
 
-Grafo::Grafo(string caminho, int estrutura){
+Grafo::Grafo(string caminho, int estrutura, bool newDirecionado, bool newPeso){
 
-    //inserir caminho na construção do grafo
     //1- lista 2-vetor 3-matriz
     numberNodes = 0;
     hasNode;
     cout<<"Construtor"<<endl;
     estruturaEscolhida = estrutura;
-    if(estrutura==1){
-        estruturaGrafo = new VectorListaAdjacencia();
-        //Entrada(caminho);
-        EntradaMax(caminho);
-
-    }else if(estrutura==2){
-        estruturaGrafo = new VectorVetorAdjacencia();
-        //Entrada(caminho);
-        EntradaMax(caminho);
-
-    }else if(estrutura==3){
-        estruturaGrafo = new MatrizAdjacencia();
-        //Entrada(caminho);
-        EntradaMax(caminho);
-    }
+    if(estrutura==1) estruturaGrafo = new VectorListaAdjacencia();
+    else if(estrutura==2) estruturaGrafo = new VectorVetorAdjacencia();
+    else if(estrutura==3) estruturaGrafo = new MatrizAdjacencia();
+    else throw current_exception;
+    Entrada(caminho);
 }
 
 void Grafo::Entrada(string filename)
@@ -62,10 +51,15 @@ void Grafo::Entrada(string filename)
             if(valorUm!=valorDois){
 
                 //se fizer a adição teremos um true
+                if (peso)
+                {
+                    /* code */
+                }
+                
                 realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois);
-
+    	        if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm);
+                
                 if(realizouAdicao){
-
                     numberArestas+=1;
                     graus[valorUm]=graus[valorUm]+1;
                     graus[valorDois]=graus[valorDois]+1;
@@ -80,64 +74,6 @@ void Grafo::Entrada(string filename)
 
 }
 
-void Grafo::popularMax(int tamanho){
-    cout<<"Entrou no popular"<<endl;
-    cout<<"Tamanho dos nodes: "<< numberNodes <<"Tamanho solicitado: "<<tamanho<<endl;
-    int valor = tamanho - numberNodes;
-    for (int i = 1; i <= valor; i++)
-    {
-        cout<<"Interacao: "<<i<<endl;
-        hasNode.push_back(false);
-        //estruturaGrafo->addVertice();
-        //listaAdj.push_back(novo);
-    }
-    numberNodes = tamanho;
-}
-
-void Grafo::EntradaMax(string filename)
-{
-    FILE *file;
-    file = fopen("max.txt","rt");
-    int n1;
-    hasNode.push_back(false);
-    
-    if (file==NULL)
-    {
-        printf("ERRO !!");
-        exit(0);
-    }
-    
-    // add primeiro vertice
-    fscanf(file,"%d ", &n1);
-    printf("%d \n",n1);
-    popularMax(n1);
-    hasNode.at(n1) = true;
-    getchar();
-    //hasNode.at(n2) = true;
-    
-    while (!feof(file))    // fecha quando os arquivos acabarem
-    {   
-        int temp[2];
-        float peso;
-        fscanf(file,"%d%d%f", &temp[0],&temp[1],peso);
-
-        printf("\n Aresta entre :%d %d, com peso %f",temp[0], temp[1], peso); 
-        getchar();
-        for (int i = 0; i <= 1; i++)
-        {
-            if (numberNodes < temp[i])
-            {
-                popularMax(temp[i]);
-            }
-            if (hasNode.at(temp[i])) //verificar se vertice o vertice existe
-            {  
-                cout<<"n2: "<<temp[i]<<" Esxiste "<<endl;    
-            }else hasNode.at(temp[i]) = true;
-            //nodes.push_back(temp[i]);  
-        }
-        // criar aresta entre n2 e n3 
-    }
-}
 
 void Grafo::Saida(string fileSaida)
 {    
@@ -402,27 +338,8 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 
 int main(){
 
-    VectorVetorAdjacencia vetList;
 
-    vetList.setSize(100);
-
-    vetList.addAresta(1,2, 5.22);
-    vetList.addAresta(3,4, 4.78);
-    vetList.addAresta(3,1, 7.625);
-    vetList.addAresta(3,1, 1.45);
-    vetList.addAresta(3,2, 4.78);
-    vetList.addAresta(7,5, 4.78);
-    vetList.addAresta(6,1, 4.78);
-
-    cout<<"Antes do show"<<endl;
-    vetList.show();
-    cout<<"Despois do show"<<endl;
-
-
-
-
-/*
-    Grafo grafo("dsf",4);
+    Grafo grafo("dsf",4,false,false);
 
 /*
      int estrutura = 1;
