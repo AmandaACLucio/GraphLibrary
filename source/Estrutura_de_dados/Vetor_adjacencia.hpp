@@ -7,19 +7,31 @@
 
 using namespace std;
 
+class NodeVec
+{
+    public:
+        int data;
+        float weight;
+
+        NodeVec();
+        NodeVec(int dataa);
+        NodeVec(int dataa, float weight);
+        void set(int i);
+        int get();
+};
+
 class VetorAdjacencia
 {
     private:
-        vector<int> nodes;
-        vector<int[2]> nodesWeight;
+        vector<NodeVec> nodes;
         int size;
 
     public:
         VetorAdjacencia();
         VetorAdjacencia(int node);
-        VetorAdjacencia(int node, int peso);
+        VetorAdjacencia(int node, float peso);
         bool add(int node);
-        bool add(int node, int peso);
+        bool add(int node, float peso);
         bool search(int node);
         int searchPositionInsert(int node);
         void show();

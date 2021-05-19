@@ -356,9 +356,23 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 
 int main(){
 
+    VectorVetorAdjacencia estrutura;
 
-    Grafo grafo("source/max.txt",3,true,false);
-    grafo.estruturaGrafo->show();
+    estrutura.setSize(10);
+    estrutura.addAresta(1,2, 10.5);
+    estrutura.addAresta(5,6, 8.4);
+    estrutura.addAresta(10,8, 4.7);
+    estrutura.addAresta(2,4, 9.7);
+    estrutura.addAresta(2,5, 45.8);
+    estrutura.addAresta(10,5, 74.5);
+    estrutura.addAresta(3,5, 4.7);
+
+    estrutura.show(true);
+
+
+
+    //Grafo grafo("source/max.txt",3,true,false);
+    //grafo.estruturaGrafo->show();
 
 /*
      int estrutura = 1;
