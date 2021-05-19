@@ -162,7 +162,7 @@ bool VectorListaAdjacencia::addAresta(int valor1, int valor2, float weight){
     return resposta;
 }
 
-void VectorListaAdjacencia::show(){
+void VectorListaAdjacencia::show(bool weight){
     for(int i = 0; i<size; i++){
         cout<<endl<<"lista "<<i<<" :";
         vetorDeListas.at(i).show();

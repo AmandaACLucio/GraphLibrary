@@ -127,7 +127,7 @@ bool VectorVetorAdjacencia::addAresta(int valor1, int valor2, float weight){
     return resposta;
 }
 
-void VectorVetorAdjacencia::show(){
+void VectorVetorAdjacencia::show(bool weight){
     for(int i = 0; i<size; i++){
         cout<<endl<<"vetor de "<<i;
         vetorDeVetores.at(i).show();

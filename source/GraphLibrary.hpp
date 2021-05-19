@@ -27,7 +27,7 @@ class Grafo
     EstruturaDeDados *estruturaGrafo;   
   
     //TP1
-    Grafo(string caminho, int estrutura, bool newDirecionado, bool newPeso);
+    Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado);
     void Entrada(string fileEntrada);
 
     void Saida(string fileSaida);

@@ -34,7 +34,7 @@ class VectorVetorAdjacencia: public EstruturaDeDados
         void setSize(int newSizeVector);
         bool addAresta(int valor1, int valor2);
         bool addAresta(int valor1, int valor2, float weight);
-        void show();
+        void show(bool weight);
 };
 
 #endif
