@@ -21,7 +21,7 @@ class MatrizAdjacencia: public EstruturaDeDados
         void setSize(int numeroVertices);
         bool addAresta(int verticeUm, int verticeDois);
         bool addAresta(int valor1, int valor2, float weight);
-        void show();
+        void show(bool weight);
 };
 
 #endif

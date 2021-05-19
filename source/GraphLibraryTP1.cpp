@@ -16,7 +16,6 @@
 #include "Estrutura_de_dados\Estrutura_de_dados.hpp"
 #include "FuncoesAuxiliares.hpp"
 
-
 using namespace std;
 
 Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
@@ -28,7 +27,7 @@ Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
     hasNode;
     cout<<"Construtor"<<endl;
     estruturaEscolhida = estrutura;
-    if(estrutura==1) estruturaGrafo = new VectorListaAdjacencia();
+    if(estrutura==1)  estruturaGrafo = new VectorListaAdjacencia();
     else if(estrutura==2) estruturaGrafo = new VectorVetorAdjacencia();
     else if(estrutura==3) estruturaGrafo = new MatrizAdjacencia();
     else throw current_exception;
@@ -37,6 +36,7 @@ Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
 
 void Grafo::Entrada(string filename)
 {
+    cout<<"Entrada"<<endl;
     const char * filenameChar = filename.c_str();
     ifstream arquivoEntrada(filenameChar); // Abri arquivo para leitura
     int quantidadeDeVertices, valorUm, valorDois;
@@ -67,6 +67,7 @@ void Grafo::Entrada(string filename)
             }                         
         }else{
             while(arquivoEntrada>>valorUm>>valorDois){
+                cout<<"Sem peso"<<endl;
                 
                 if(valorUm!=valorDois){
 
@@ -89,7 +90,6 @@ void Grafo::Entrada(string filename)
     }else{
         cout << "ERRO: arquivo não foi aberto ou não existe" << endl;
     }
-
 }
 
 

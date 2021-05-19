@@ -60,13 +60,25 @@ bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois, float weight){
 }
 
 void MatrizAdjacencia::show(bool weight){
-       
-    for(int linha=0; linha<size+1; linha++){
-        for(int coluna=0; coluna<size+1; coluna++){
-            cout<<matrizWeight[linha][coluna]<<" ";
-        }
-        cout<<endl;
-    }    
+    
+    if(weight){
+        for(int linha=0; linha<size+1; linha++){
+            for(int coluna=0; coluna<size+1; coluna++){
+                cout<<matrizWeight[linha][coluna]<<" ";
+            }
+            cout<<endl;
+        }        
+    }else{
+        for(int linha=0; linha<size+1; linha++){
+            for(int coluna=0; coluna<size+1; coluna++){
+                cout<<matrizWeight[linha][coluna]<<" ";
+            }
+            cout<<endl;
+        }         
+    }
+
+
+    
 }
 
 

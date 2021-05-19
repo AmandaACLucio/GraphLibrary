@@ -40,7 +40,6 @@ class Grafo
     bool MesmaComponente(int nodeUm, int nodeDois);
 
     //TP2
-    void Entrada(string fileEntrada, bool peso);
     vector<int> Dijkstra(int nodeUm, int nodeDois); //caminho mínimo
     int Distancia(int nodeUm, int nodeDois, bool peso); //usando Dijkstra
     void MST(); //escrita no formato de grafo em um arquivo de saída

@@ -48,14 +48,13 @@ class VectorListaAdjacencia: public EstruturaDeDados
 {    
     private:
         vector<ListaAdjacencia> vetorDeListas;
-        int sizeLista;
 
     public:
         //VectorListaAdjacencia(int newSizeVector);
         void setSize(int newSizeVector);
         bool addAresta(int valor1, int valor2);
         bool addAresta(int valor1, int valor2, float weight);
-        void show();
+        void show(bool weight);
 };
 #endif
 
