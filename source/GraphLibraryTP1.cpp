@@ -356,6 +356,7 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 
 int main(){
 
+    VectorVetorAdjacencia estrutura;
 
     Grafo grafo("source/maxPeso.txt",3,true,false);
     grafo.estruturaGrafo->show(true);
