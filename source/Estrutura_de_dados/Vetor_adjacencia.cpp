@@ -16,8 +16,7 @@ VetorAdjacencia::VetorAdjacencia(int node){
 }
 
 VetorAdjacencia::VetorAdjacencia(int node, int peso){
-    int no[] = {node, peso};
-    nodes.push_back(no);
+    nodesWeight.push_back({node, peso});
     size = 1;
 }
 
@@ -50,7 +49,35 @@ bool VetorAdjacencia::add(int node){
     }
     return false;
 }
+bool VetorAdjacencia::add(int node, int peso){
+    if(!search(node)){ //só adiciona se o nó não existir ainda
+        if(size==0){
+            nodesWeight.push_back({node, peso});
+            size = 1;
+            return true;
+        }else{
+            int positionInsert, next, aux;
+            int positionAtual=size;
 
+            positionInsert= searchPositionInsert(node);
+
+            if(positionInsert==size){
+                nodes.push_back(node);            
+            }else{
+                nodes.push_back(nodes.at(size-1));
+                while(positionAtual!=positionInsert){
+                    aux = nodes.at(positionAtual-1);
+                    nodes.at(positionAtual) = aux;
+                    positionAtual--;
+                }
+                nodes.at(positionInsert) = node;
+            }
+            size=size+1;
+            return true;
+        }
+    }
+    return false;
+}
 bool VetorAdjacencia::search(int node){
     for(int i=0; i<nodes.size(); i++){
         if(nodes.at(i)==node){

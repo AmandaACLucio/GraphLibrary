@@ -10,8 +10,8 @@ using namespace std;
 class VetorAdjacencia
 {
     private:
-        /* data */
         vector<int> nodes;
+        vector<int[2]> nodesWeight;
         int size;
 
     public:
@@ -19,6 +19,7 @@ class VetorAdjacencia
         VetorAdjacencia(int node);
         VetorAdjacencia(int node, int peso);
         bool add(int node);
+        bool add(int node, int peso);
         bool search(int node);
         int searchPositionInsert(int node);
         void show();
