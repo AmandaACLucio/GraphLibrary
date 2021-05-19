@@ -19,7 +19,7 @@
 
 using namespace std;
 
-Grafo::Grafo(string caminho, int estrutura, bool newDirecionado, bool newPeso){
+Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
 
     //1- lista 2-vetor 3-matriz
     direcionado = newDirecionado;
@@ -39,7 +39,8 @@ void Grafo::Entrada(string filename)
 {
     const char * filenameChar = filename.c_str();
     ifstream arquivoEntrada(filenameChar); // Abri arquivo para leitura
-    int quantidadeDeVertices, valorUm, valorDois, newpeso;
+    int quantidadeDeVertices, valorUm, valorDois;
+    float newPeso;
     bool realizouAdicao;
 
     if (arquivoEntrada.is_open()) {
@@ -47,15 +48,15 @@ void Grafo::Entrada(string filename)
         arquivoEntrada >> quantidadeDeVertices;
 
         estruturaGrafo->setSize(quantidadeDeVertices);
-        
+
         if (peso) {
-            while(arquivoEntrada>>valorUm>>valorDois>>newpeso){
+            while(arquivoEntrada>>valorUm>>valorDois>>newPeso){
                 
                 if(valorUm!=valorDois){
 
                     //se fizer a adição teremos um true
-                    realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois, newpeso);
-                    if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm, newpeso); 
+                    realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois, newPeso);
+                    if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm, newPeso); 
 
                     if(realizouAdicao){
                         numberArestas+=1;
@@ -68,6 +69,9 @@ void Grafo::Entrada(string filename)
             while(arquivoEntrada>>valorUm>>valorDois){
                 
                 if(valorUm!=valorDois){
+
+                    cout<<"valorUM"<<valorUm<<endl;
+                    cout<<"valorDois"<<valorDois<<endl;
 
                     //se fizer a adição teremos um true
                     realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois);
@@ -353,7 +357,8 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 int main(){
 
 
-    Grafo grafo("max.txt",4,true,false);
+    Grafo grafo("source/max.txt",3,true,false);
+    grafo.estruturaGrafo->show();
 
 /*
      int estrutura = 1;
