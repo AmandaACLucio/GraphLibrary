@@ -357,8 +357,8 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
 int main(){
 
 
-    Grafo grafo("source/max.txt",3,true,false);
-    grafo.estruturaGrafo->show();
+    Grafo grafo("source/maxPeso.txt",3,true,false);
+    grafo.estruturaGrafo->show(true);
 
 /*
      int estrutura = 1;
