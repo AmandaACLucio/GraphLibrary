@@ -123,7 +123,7 @@ void VetorAdjacencia::show(){
     {
         cout<<nodes.at(i).data<<" Peso-> "<<nodes.at(i).weight<<", ";
     }
-    cout<<")";
+    cout<<")"<<endl<<endl<<endl;
 }
 
 void VectorVetorAdjacencia::setSize(int newSizeVector){
