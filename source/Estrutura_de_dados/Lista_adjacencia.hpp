@@ -55,6 +55,8 @@ class VectorListaAdjacencia: public EstruturaDeDados
         bool addAresta(int valor1, int valor2);
         bool addAresta(int valor1, int valor2, float weight);
         void show(bool weight);
+        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho);
+        virtual int sizeVertice(int vertice);
 };
 #endif
 

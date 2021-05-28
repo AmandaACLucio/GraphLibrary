@@ -15,6 +15,8 @@ class EstruturaDeDados{
     virtual bool addAresta(int valor1, int valor2)=0;
     virtual bool addAresta(int valor1, int valor2, float weight)=0;
     virtual void show(bool weight)=0;
+    virtual pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho);
+    virtual int sizeVertice(int vertice);
     //virtual void addVertice();
     //virtual bool addAresta(int valor1, int valor2);
 

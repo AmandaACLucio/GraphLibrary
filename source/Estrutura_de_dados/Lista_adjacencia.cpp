@@ -169,3 +169,11 @@ void VectorListaAdjacencia::show(bool weight){
         vetorDeListas.at(i).show();
     }
 }
+
+pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
+    
+}
+
+int VectorListaAdjacencia::sizeVertice(int vertice){
+
+}

@@ -386,17 +386,12 @@ int main(){
     cout << v1.front() << endl;
 
 
-<<<<<<< HEAD
 
     Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
     //grafo.estruturaGrafo->show(true);
 
 
 
-=======
-    Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
-    //grafo.estruturaGrafo->show(true);
->>>>>>> 2476aa9d1ea938e8acdef998665f08074776c86d
 
 /*
     Grafo grafo("source/grafo_W_1.txt",1,true,false);

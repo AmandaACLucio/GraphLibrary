@@ -77,6 +77,14 @@ void MatrizAdjacencia::show(bool weight){
         }         
     }
 }
+pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
+    
+}
+
+
+int MatrizAdjacencia::sizeVertice(int vertice){
+
+}
 
 
         

@@ -19,33 +19,32 @@ using namespace std;
 
 
 vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
-    int infinito = 99999999;
+    
     //float distancia[numberNodes];
-    set<pair<int,float>> distancia;
-    vector<bool> explorados;
+    set<pair<int,float>> distancia; //first ->vertice, second ->peso
     vector<int> pai;
+    int distanciaOrigem[numberNodes+1]; 
 
-
-    for (int i = 0; i < numberNodes; i++)
-    {
-        distancia.insert({i, infinito});
-        explorados.at(i) = false;
+    for (int j = 0; j < numberNodes+1; j++){
+        int infinito = 99999999;
+        distanciaOrigem[j] = infinito;
     }
-    distancia.at(0) = 0;
-    make_heap(distancia.begin(), distancia.end(),  std::greater<>{});
-    while (explorados!=hasNode)
+    distancia.insert({nodeUm, 0});
+    while (!distancia.empty())
     {
-        int ultimo = distancia.back();
-        distancia.pop_back();
-        int distanciaMinima = 0;
+        int minVertice = distancia.begin()->first;
+        int minPeso = distancia.begin()->second;
 
-        if ()
+        distancia.erase(distancia.begin());
+        for (int i = 0; i < estruturaGrafo.index(minVertice).size(); i++)
         {
-            
+            pair<int, float> node = estruturaGrafo.vizinhoDeVertice(minVertice, i);
+            if (distanciaOrigem[node.first] > (minPeso + node.second) )
+            {
+                distanciaOrigem[node.first] = (minPeso + node.second);
+                distancia.insert({node.first, distanciaOrigem[node.first]});
+            }
         }
-        
-        int vs ;//= pesquisa(s,hasNode);
-        pair<
         
     }
 }
