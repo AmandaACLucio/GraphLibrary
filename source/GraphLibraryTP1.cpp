@@ -145,7 +145,7 @@ void Grafo::Saida(string fileSaida)
 }
 
 vector<vector<int>> Grafo::BFS(int raiz)
-{/*
+{
     vector<bool> verticesMarcados;
     vector<int> fila, marcadosList, pai, nivel;
 
@@ -175,29 +175,10 @@ vector<vector<int>> Grafo::BFS(int raiz)
         fila.erase(fila.begin());
         nivel.at(explorado) = nivelValue;
         nivelValue=nivel.at(pai.at(explorado))+1;
-
-
-vetorVetorAdjacencias -> O(1)
-listaVetorAdjacencias -> O(1) .... next = null
-estruraGrafo.at(2).size()
-estruturaGrafo.at(v, i).vizinho
-v=1
-estruturaGrafo.at(v)->next = null;
-for(int i=0; i<estruraGrafo.at(v).size(); i++){
-
-    int w = estruturaGrafo.at(v, i).vizinho;
-    w = w.next();
-}
-
-
-
-
-
-/////////////////////criar função para retornar tamanho de acordo com a posição
-//////////////////// criar função para retornar o filho em determinada posição de um nó em dada posição ou vetor de filhos
-//////////////////// se escolher a primeira posição a gnt fazer em n ao invés de 2n aqui dentro, mas a linked list vai ficar prejudicada
-        for(int vertice=0; vertice < vetorAdj.at(explorado).sizeVetor(); vertice++){
-            int filho = vetorAdj.at(explorado).valueIndex(vertice);
+        int endFor= estruturaGrafo->sizeVertice(explorado);
+        
+        for(int vertice=0; vertice < endFor; vertice++){
+            int filho = estruturaGrafo->vizinhoDeVertice(explorado, vertice);
             if(!verticesMarcados.at(filho)){
                 pai.at(filho)= explorado;
                 verticesMarcados.at(filho) = true;
@@ -211,7 +192,6 @@ for(int i=0; i<estruraGrafo.at(v).size(); i++){
     retorno.push_back(marcadosList);
 
     return retorno;
-*/
 }
 
 vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
@@ -237,8 +217,9 @@ vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
     while (!pilhaDfs.empty()) // enquanto a pilha pilhaDfs náo estiver vazia
     {
         int k = pilhaDfs.top();
-        if (std::find(filho.begin(), filho.end(), k) != filho.end()){}
-        else  filho.push_back(k);
+        if (!(find(filho.begin(), filho.end(), k) != filho.end())){
+            filho.push_back(k);
+        }
         
         for (int i = 0; i <= numberNodes+1; i++)
         {

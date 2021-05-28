@@ -42,6 +42,7 @@ vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
 
         for (int i = 0; i < endFor; i++)
         {
+            //caso não tenho um viznho na posição i, a função vizinhoDeVertice retorna {-1, NAN}
             pair<int, float> node = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
             if (node.first !=-1 && (distanciaOrigem[node.first] > (minPeso + node.second)) )
             {
@@ -81,8 +82,11 @@ void Grafo::MST(int inicio){
         int endFor= estruturaGrafo->sizeVertice(minVertice);
         descoberto[minVertice] = true;
 
-        for (int i = 0; i < endFor; i++){  
+        for (int i = 0; i < endFor; i++){
+
+            //caso não tenho um viznho na posição i, a função vizinhoDeVertice retorna {-1, NAN}
             pair<int, float> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
+            
             if (vizinho.first !=-1 && !descoberto[vizinho.first] && ((pai.at(vizinho.first).second) > (vizinho.second)) )
             {
                 pai.at(vizinho.first)={minVertice, pai.at(vizinho.first).second};
