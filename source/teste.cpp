@@ -15,58 +15,56 @@ int main()
     int numberNodes = 55;
     int infinito = 99999999;
     vector<bool> hasNode;
-    cout<<"Teste"<<endl;
 
     vector<pair<float,int>> distancia; //fist: peso second: no
     vector<bool> s;
-/*
-    for (int i = 0; i < numberNodes; i++)
-    {
-        pair<int,float>  f = {i,infinito};
-        distancia.push_back(f);
-        s.push_back(false);
-        hasNode.push_back(true);
-    }
-    while (s!=hasNode)
-    {
-        int ultimo = distancia.back().first;
-        distancia.pop_back();
-        int distanciaMinima = 0;
-    }
-    */
-    distancia.push_back({4.5,2});
-    distancia.push_back({5.2,1});
-    distancia.push_back({8.4,3});
 
+    distancia.push_back({9,0});
+    distancia.push_back({5.2,1});
+    distancia.push_back({1.5,2});
+    distancia.push_back({8.4,3});
+    distancia.push_back({3.4,4});
+    distancia.push_back({9.4,5});
+    
+    cout<<endl<<endl<<"*** Antes do make_heap ***"<<endl;
+    for (auto i : distancia) cout <<"Vertice: "<< i.second <<" peso: "<< i.first << ' ';
 
     make_heap(distancia.begin(), distancia.end(),   std::greater<>{});
-/*
-    distancia2.push_back(5);
-    distancia2.push_back(1);
-    distancia2.push_back(3);
-*/
+
+    cout<<endl<<endl<<"*** Depois do make_heap ***"<<endl;
+
+    for (auto i : distancia) cout <<"Vertice: "<< i.second <<" peso: "<< i.first << ' ';
 
     auto top = distancia.front();
-    //cout<<top.first<<"   "<<top.second;
-    cout<<"vertice: "<<top.second<<" peso: "<<top.first<<endl<<endl<<endl;
+    cout<<endl<<endl<<"O menor valor do heap. vertice: "<<top.second<<" peso: "<<top.first<<endl<<endl<<endl;
 
-
-    distancia.push_back({1.2,8});
     
-    make_heap(distancia.begin(), distancia.end(),   std::greater<>{});
+    distancia.at(1).first = 2.8;
+    distancia.at(2).first = 3.8;
+    distancia.at(3).first = 1.6;
+    distancia.at(5).first = 2.7;
+    distancia.at(4).first = 1.2;
+    
+
+    cout<<endl<<endl<<"*** Depois do at ***"<<endl;
+
+    for (auto i : distancia) cout <<"Vertice: "<< i.second <<" peso: "<< i.first << ' ';
+
     auto topp = distancia.front();
+    cout<<endl<<endl<<"O menor valor do heap. vertice: "<<topp.second<<" peso: "<<topp.first<<endl<<endl<<endl;
 
-    cout<<"vertice: "<<topp.second<<" peso: "<<topp.first<<endl<<endl<<endl;
+    cout<<endl<<endl<<"*** Depois do push heap ***"<<endl;
 
-    
+    push_heap(distancia.begin(), distancia.end(),   std::greater<>{});
+    for (auto i : distancia) cout <<"Vertice: "<< i.second <<" peso: "<< i.first << ' ';
 
-    cout<<"vertice: "<<topp.second<<" peso: "<<topp.first<<endl<<endl<<endl;
+    auto toppp = distancia.front();
+    cout<<endl<<endl<<"O menor valor do heap. vertice: "<<toppp.second<<" peso: "<<toppp.first<<endl<<endl<<endl;
+    cout<<endl<<endl;
 
 
-/*
-    distancia.at(nodeUm).second = 0;
-    cout<<"top- fist: "<<distancia.back().first<<" second: "<<distancia.back().second<<endl;
-   */ 
+
+
 }
 
 // Dijkstra(G, s)

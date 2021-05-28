@@ -410,10 +410,15 @@ int main(){
     cout << v1.front() << endl;
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+    Grafo grafo("source/maxPeso.txt",3,true,false);
+    grafo.estruturaGrafo->show(true);
+>>>>>>> fab2a9af80fe90d317a632f56dd54b6d0c7c547c
 
 
 /*

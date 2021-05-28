@@ -43,6 +43,6 @@ class Grafo
     vector<int> Dijkstra(int nodeUm, int nodeDois); //caminho mínimo
     int Distancia(int nodeUm, int nodeDois, bool peso); //usando Dijkstra
     void MST(); //escrita no formato de grafo em um arquivo de saída
-    int Excentricidadeint(int nodeUm, int nodeDois);
+    int Excentricidade(int nodeUm, int nodeDois);
 
 };
