@@ -118,6 +118,7 @@ void ListaAdjacencia::show(){
         cout<<c<<" - Peso: "<<b<<" , ";
         nodee = nodee->get_next();
     }
+    printf("\n\n\n\n\n");
 }
 
 bool ListaAdjacencia::search(int i){

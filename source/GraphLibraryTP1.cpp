@@ -358,14 +358,82 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
     }
     return true;
 }
+/*
+vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
+    int infinito = 99999999;
+    //float distancia[numberNodes];
+    vector<pair<int,float>> distancia;
+    vector<bool> s;
+    vector<int> pai;
+
+    for (int i = 0; i < numberNodes; i++)
+    {
+        distancia[i].second = infinito;
+        s.at(i) = false;
+    }
+    distancia[nodeUm] = 0;
+    make_heap(distancia.begin(), distancia.end(),  std::greater<>{});
+    while (s!=hasNode)
+    {
+        int ultimo = distancia.back();
+        distancia.pop_back();
+        int distanciaMinima = 0;
+
+        if ()
+        {
+            
+        }
+        
+        int vs ;//= pesquisa(s,hasNode);
+        pair<
+        
+    }
+    
+// Dijkstra(G, s)
+//      Para cada vértice v
+//              dist[v] = infinito
+//       Define conjunto S = 0 // inicia vazio
+//       dist[s] = 0
+//       Enquanto S != V
+//          Selecione u em V-S, tal que dist[u] é mínima       *
+//          Adicione u em S
+//          Para cada vizinho v de u faça
+//              Se dist[v] > dist[u] + w(u,v) então
+//                  dist[v] = dist[u] + w(u,v)
+//Retorna dist[]
+
+}*/
 
 int main(){
 
-    VectorVetorAdjacencia estrutura;
+    vector<int> v1 = {20, 30, 40, 25, 15, 50};
+      
+    // Converting vector into a heap
+    // using make_heap()
+    make_heap(v1.begin(), v1.end(),  greater<>{});
+    cout << "The maximum element of heap is : ";
+    cout << v1.front() << endl;
 
+
+<<<<<<< HEAD
+
+
+<<<<<<< HEAD
     Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
     //grafo.estruturaGrafo->show(true);
+=======
 
+
+=======
+    Grafo grafo("source/maxPeso.txt",3,true,false);
+    grafo.estruturaGrafo->show(true);
+>>>>>>> fab2a9af80fe90d317a632f56dd54b6d0c7c547c
+
+>>>>>>> 2e3a609dfb2ebd3ee8c81c4103998a21e9f7481d
+
+/*
+    Grafo grafo("source/grafo_W_1.txt",1,true,false);
+    grafo.estruturaGrafo->show(true);
 /*
      int estrutura = 1;
     clock_t inicio, fim;
