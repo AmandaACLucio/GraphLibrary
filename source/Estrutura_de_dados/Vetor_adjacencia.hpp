@@ -23,10 +23,11 @@ class NodeVec
 class VetorAdjacencia
 {
     private:
-        vector<NodeVec> nodes;
-        int size;
+        int sizeVetor;
 
     public:
+        vector<NodeVec> nodes;
+        
         VetorAdjacencia();
         VetorAdjacencia(int node);
         VetorAdjacencia(int node, float peso);
@@ -34,6 +35,7 @@ class VetorAdjacencia
         bool add(int node, float peso);
         bool search(int node);
         int searchPositionInsert(int node);
+        int getSize();
         void show();
 };
 
@@ -47,7 +49,8 @@ class VectorVetorAdjacencia: public EstruturaDeDados
         bool addAresta(int valor1, int valor2);
         bool addAresta(int valor1, int valor2, float weight);
         void show(bool weight);
-        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho);
+        int vizinhoDeVertice(int vertice, int posicaoVizinho);
+        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight);
         virtual int sizeVertice(int vertice);
 };
 

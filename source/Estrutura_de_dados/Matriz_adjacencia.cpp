@@ -77,13 +77,42 @@ void MatrizAdjacencia::show(bool weight){
         }         
     }
 }
-pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
-    
+
+int MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
+    if(posicaoVizinho>=size || vertice>=size){
+        return -1;
+    }
+    if(matriz[vertice][posicaoVizinho]==false && matriz[posicaoVizinho][vertice]==false){
+        return -1;
+    }else{
+        return posicaoVizinho;    
+    }
+}
+
+pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho,  bool weight){
+
+    pair <int, float> dupla;
+    float pesoVertice;
+
+
+    if(posicaoVizinho>=size || vertice>=size){
+        pesoVertice = nan("");
+        dupla = {-1, pesoVertice};
+    }
+
+    if(isnan(matrizWeight[vertice][posicaoVizinho]) && isnan(matrizWeight[posicaoVizinho][vertice])){
+        pesoVertice= matrizWeight[vertice][posicaoVizinho];
+        dupla = {-1, pesoVertice};
+    }else{
+        pesoVertice= matrizWeight[vertice][posicaoVizinho];
+        dupla = {posicaoVizinho, pesoVertice};
+    }
+    return dupla;
 }
 
 
 int MatrizAdjacencia::sizeVertice(int vertice){
-
+    return size;
 }
 
 

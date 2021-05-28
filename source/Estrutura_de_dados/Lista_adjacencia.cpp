@@ -139,6 +139,23 @@ int ListaAdjacencia::size(){
     return sizeLista;
 }
 
+NodeList* ListaAdjacencia::getNodePosition(int position){
+    
+    if(position<iterator){
+        iterator = 0;
+        nextIterator = top;
+    }
+
+    while (iterator<position)
+    {
+        int node = nextIterator->get();
+        float weightNode = nextIterator->weight;
+        nextIterator = nextIterator->get_next();
+    }
+    return nextIterator;
+
+}
+
 NodeList* ListaAdjacencia::getTop(){    
     return top;
 }
@@ -170,10 +187,42 @@ void VectorListaAdjacencia::show(bool weight){
     }
 }
 
-pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
-    
+int VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
+    pair <int, float> dupla;
+    int vizinho;
+    int sizeValue = sizeVertice(vertice);
+
+    if(posicaoVizinho>=sizeValue || vertice>=sizeValue){
+        vizinho = -1;
+    }else{
+        NodeList* nodeVizinho = vetorDeListas.at(vertice).getNodePosition(posicaoVizinho);
+        vizinho = nodeVizinho->data;
+    }
+
+    return vizinho;
+}
+
+pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight){
+
+    pair <int, float> dupla;
+    int vizinho;
+    float pesoVertice;
+    int sizeValue = sizeVertice(vertice);
+
+    if(posicaoVizinho>=sizeValue || vertice>=sizeValue){
+        pesoVertice = nan("");
+        dupla = {-1, pesoVertice};
+    }else{
+        NodeList* nodeVizinho = vetorDeListas.at(vertice).getNodePosition(posicaoVizinho);
+        pesoVertice = nodeVizinho->weight;
+        vizinho = nodeVizinho->data;
+        dupla = {vizinho, pesoVertice};
+    }
+
+    return dupla;    
 }
 
 int VectorListaAdjacencia::sizeVertice(int vertice){
-
+    int sizeValue = vetorDeListas.at(vertice).size()+1;
+    return sizeValue;
 }

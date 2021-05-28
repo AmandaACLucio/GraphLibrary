@@ -36,10 +36,13 @@ vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
         int minPeso = distancia.begin()->second;
 
         distancia.erase(distancia.begin());
-        for (int i = 0; i < estruturaGrafo.index(minVertice).size(); i++)
+        
+        int endFor= estruturaGrafo->sizeVertice(minVertice);
+
+        for (int i = 0; i < endFor; i++)
         {
-            pair<int, float> node = estruturaGrafo.vizinhoDeVertice(minVertice, i);
-            if (distanciaOrigem[node.first] > (minPeso + node.second) )
+            pair<int, float> node = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
+            if (node.first !=-1 || (distanciaOrigem[node.first] > (minPeso + node.second)) )
             {
                 distanciaOrigem[node.first] = (minPeso + node.second);
                 distancia.insert({node.first, distanciaOrigem[node.first]});

@@ -19,37 +19,37 @@ NodeVec::NodeVec(int newData, float newWeight){
 }
 
 VetorAdjacencia::VetorAdjacencia(){
-    size = 0;
+    sizeVetor = 0;
 }
 
 VetorAdjacencia::VetorAdjacencia(int node){
     NodeVec nodeTemp(node);
     nodes.push_back(nodeTemp);
-    size = 1;
+    sizeVetor = 1;
 }
 
 VetorAdjacencia::VetorAdjacencia(int node, float peso){
     NodeVec nodeTemp(node, peso);
     nodes.push_back(nodeTemp);
-    size = 1;
+    sizeVetor = 1;
 }
 
 bool VetorAdjacencia::add(int node){
     if(!search(node)){ //só adiciona se o nó não existir ainda
-        if(size==0){
+        if(sizeVetor==0){
             nodes.push_back(node);
-            size = 1;
+            sizeVetor = 1;
             return true;
         }else{
             int positionInsert, aux;
-            int positionAtual=size;
+            int positionAtual=sizeVetor;
 
             positionInsert= searchPositionInsert(node);
 
-            if(positionInsert==size){
+            if(positionInsert==sizeVetor){
                 nodes.push_back(node);            
             }else{
-                nodes.push_back(nodes.at(size-1));
+                nodes.push_back(nodes.at(sizeVetor-1));
                 while(positionAtual!=positionInsert){
                     aux = nodes.at(positionAtual-1).data;
                     nodes.at(positionAtual) = aux;
@@ -57,7 +57,7 @@ bool VetorAdjacencia::add(int node){
                 }
                 nodes.at(positionInsert) = node;
             }
-            size=size+1;
+            sizeVetor=sizeVetor+1;
             return true;
         }
     }
@@ -67,20 +67,20 @@ bool VetorAdjacencia::add(int node){
 bool VetorAdjacencia::add(int node, float peso){
     NodeVec nodeTemp(node, peso);
     if(!search(node)){ //só adiciona se o nó não existir ainda
-        if(size==0){
+        if(sizeVetor==0){
             nodes.push_back(nodeTemp);
-            size = 1;
+            sizeVetor = 1;
             return true;
         }else{
             int positionInsert;
             NodeVec aux;
-            int positionAtual=size;
+            int positionAtual=sizeVetor;
             positionInsert= searchPositionInsert(node);
 
-            if(positionInsert==size){
+            if(positionInsert==sizeVetor){
                 nodes.push_back(nodeTemp);            
             }else{
-                nodes.push_back(nodes.at(size-1));
+                nodes.push_back(nodes.at(sizeVetor-1));
                 while(positionAtual!=positionInsert){
                     aux = nodes.at(positionAtual-1);
                     nodes.at(positionAtual) = aux;
@@ -88,7 +88,7 @@ bool VetorAdjacencia::add(int node, float peso){
                 }
                 nodes.at(positionInsert) = node;
             }
-            size=size+1;
+            sizeVetor=sizeVetor+1;
             return true;
         }
     }
@@ -104,8 +104,12 @@ bool VetorAdjacencia::search(int node){
     return false;
 }
 
+int VetorAdjacencia::getSize(){
+    return sizeVetor+1;
+}
+
 int VetorAdjacencia::searchPositionInsert(int node){
-    if(size==0){
+    if(sizeVetor==0){
         return 0;
     }
     for(int i=0; i<nodes.size(); i++){
@@ -113,7 +117,7 @@ int VetorAdjacencia::searchPositionInsert(int node){
             return i;
         }
     }
-    return size;
+    return sizeVetor;
 }
 
 void VetorAdjacencia::show(){
@@ -150,11 +154,38 @@ void VectorVetorAdjacencia::show(bool weight){
     }
 }
 
-pair <int,float> VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
-    
+int VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
+    int vizinho;
+
+    if(posicaoVizinho>=size || vertice>=size){
+        vizinho = -1;
+    }else{
+        vizinho = vetorDeVetores.at(vertice).nodes.at(posicaoVizinho).data;
+    }
+
+    return vizinho;
 }
 
+pair <int,float> VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight){
+    
+    pair <int, float> dupla;
+    int vizinho;
+    float pesoVertice;
+    int sizeValue = sizeVertice(vertice);
+
+    if(posicaoVizinho>=sizeValue || vertice>=sizeValue){
+        pesoVertice = nan("");
+        dupla = {-1, pesoVertice};
+    }else{
+        pesoVertice = vetorDeVetores.at(vertice).nodes.at(posicaoVizinho).weight;
+        vizinho = vetorDeVetores.at(vertice).nodes.at(posicaoVizinho).data;
+        dupla = {vizinho, pesoVertice};
+    }
+
+    return dupla;
+}
 
 int VectorVetorAdjacencia::sizeVertice(int vertice){
-
+    int sizeValue = vetorDeVetores.at(vertice).getSize();
+    return sizeValue;
 }

@@ -29,6 +29,8 @@ class ListaAdjacencia
     private:
         NodeList* top;
         NodeList* last;
+        NodeList* nextIterator;
+        int iterator=0;
         int sizeLista;
 
     public:
@@ -39,6 +41,7 @@ class ListaAdjacencia
         void show();
         bool search(int i);
         int size();
+        NodeList* getNodePosition(int position);
         NodeList* getTop();
         bool sortedInsert(int val);
         bool sortedInsert(int val, float newWeight);
@@ -55,8 +58,9 @@ class VectorListaAdjacencia: public EstruturaDeDados
         bool addAresta(int valor1, int valor2);
         bool addAresta(int valor1, int valor2, float weight);
         void show(bool weight);
-        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho);
-        virtual int sizeVertice(int vertice);
+        int vizinhoDeVertice(int vertice, int posicaoVizinho);        
+        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight);
+        int sizeVertice(int vertice);
 };
 #endif
 
