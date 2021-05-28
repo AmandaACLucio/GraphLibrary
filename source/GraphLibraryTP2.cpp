@@ -6,12 +6,13 @@
 #include <string>
 #include <time.h>
 #include <set>
-#include "GraphLibrary.hpp" //precisa editar makefile para incluir essa biblioteca
+#include "GraphLibrary.hpp"
 #include "Estrutura_de_dados\Lista_adjacencia.hpp"
 #include "Estrutura_de_dados\Vetor_adjacencia.hpp"
 #include "Estrutura_de_dados\Matriz_adjacencia.hpp"
 #include "Estrutura_de_dados\Estrutura_de_dados.hpp"
 #include "FuncoesAuxiliares.hpp"
+#define INFINITO 0x3f3f3f3f
 
 
 using namespace std;
@@ -26,7 +27,7 @@ vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
     int distanciaOrigem[numberNodes+1]; 
 
     for (int j = 0; j < numberNodes+1; j++){
-        int infinito = 99999999;
+        int infinito = INFINITO;
         distanciaOrigem[j] = infinito;
     }
     distancia.insert({nodeUm, 0});
@@ -42,7 +43,7 @@ vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
         for (int i = 0; i < endFor; i++)
         {
             pair<int, float> node = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
-            if (node.first !=-1 || (distanciaOrigem[node.first] > (minPeso + node.second)) )
+            if (node.first !=-1 && (distanciaOrigem[node.first] > (minPeso + node.second)) )
             {
                 distanciaOrigem[node.first] = (minPeso + node.second);
                 distancia.insert({node.first, distanciaOrigem[node.first]});
@@ -52,57 +53,49 @@ vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
     }
 }
 
-// Dijkstra(G, s)
-//      Para cada vértice v
-//              dist[v] = infinito
-//       Define conjunto S = 0 // inicia vazio
-//       dist[s] = 0
-//       Enquanto S != V
-//          Selecione u em V-S, tal que dist[u] é mínima       *
-//          Adicione u em S
-//          Para cada vizinho v de u faça
-//              Se dist[v] > dist[u] + w(u,v) então
-//                  dist[v] = dist[u] + w(u,v)
-//Retorna dist[]
-
-
-
 void Grafo::MST(int inicio){
     
     int tamanhoComponente, idComponente;
-    int pai[numberNodes+1];
-    vector<float> custo;
+    int nivel[numberNodes+1];
+    bool descoberto[numberNodes+1];
+    vector<pair<int,float>> pai;
+    set<pair<int,float>> distancia; //first ->vertice, second ->peso
+    float custoTotal = 0; 
 
     string filesaida = "Temp.tx";
-    vector<int> componentes;
-    vector<int[2]> floresta;
-
-    string filesaida = "Temp.tx";
-    componentes = ComponentesConexas(filesaida).at(1); //retorna um vetor de vetor com componentes mapeadas, pois Prim não funciona para grafos não conexos
-
-    tamanhoComponente = BFS(inicio).at(2).size();
-    idComponente = componentes.at(inicio);
 
     for (int vertice = 0; vertice < numberNodes+1; vertice++){
-        custo.push_back(numberNodes+1); //infinito
-        pai[vertice]=-1;
+        pai.push_back({-1, INFINITO});
     }
-
-    custo.at(inicio) = 0;
-    make_heap(custo.begin(), custo.end(), std::greater<>{});
+ 
+    distancia.insert({inicio, 0});
 
     //verificar se todos os nós já foram explorados
-    while(floresta.size()!=tamanhoComponente){
+    while(!distancia.empty()){
         
-        auto menorPeso = custo.back();
-        int dupla[2] = {inicio, menorPeso};
-        floresta.push_back(dupla);
-        //função que pega vizinhos
-        vector<int[2]> vizinhos; //vector de listas com [vizinho, peso]
-        for(int i=0; i<vizinhos.size(); i++){
-            if(custo[vizinhos.at(i)[0]]>vizinhos.at(i)[1]){
-                custo[vizinhos.at(i)[0]]=vizinhos.at(i)[1];
-            }
+        int minVertice = distancia.begin()->first;
+        int minPeso = distancia.begin()->second;
+
+        distancia.erase(distancia.begin());
+
+        int endFor= estruturaGrafo->sizeVertice(minVertice);
+        descoberto[minVertice] = true;
+
+        for (int i = 0; i < endFor; i++){  
+            pair<int, float> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
+            if (vizinho.first !=-1 && !descoberto[vizinho.first] && ((pai.at(vizinho.first).second) > (vizinho.second)) )
+            {
+                pai.at(vizinho.first)={minVertice, pai.at(vizinho.first).second};
+                nivel[vizinho.first]=nivel[minVertice]+1;
+            }          
+        }
+    }
+
+    //calculo custo total da MST
+
+    for(int i=0; i<pai.size(); i++){
+        if(pai.at(i).second != INFINITO){
+            custoTotal+=pai.at(i).second;
         }
     }
 }
