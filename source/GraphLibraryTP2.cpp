@@ -3,12 +3,9 @@
 #include <cmath>
 #include <vector>
 #include <cstdlib>
-#include <fstream>
-#include <map>
-#include <stack>
-#include <sstream>
 #include <string>
 #include <time.h>
+#include <set>
 #include "GraphLibrary.hpp" //precisa editar makefile para incluir essa biblioteca
 #include "Estrutura_de_dados\Lista_adjacencia.hpp"
 #include "Estrutura_de_dados\Vetor_adjacencia.hpp"
@@ -18,6 +15,55 @@
 
 
 using namespace std;
+
+
+
+vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
+    int infinito = 99999999;
+    //float distancia[numberNodes];
+    set<pair<int,float>> distancia;
+    vector<bool> explorados;
+    vector<int> pai;
+
+
+    for (int i = 0; i < numberNodes; i++)
+    {
+        distancia.insert({i, infinito});
+        explorados.at(i) = false;
+    }
+    distancia.at(0) = 0;
+    make_heap(distancia.begin(), distancia.end(),  std::greater<>{});
+    while (explorados!=hasNode)
+    {
+        int ultimo = distancia.back();
+        distancia.pop_back();
+        int distanciaMinima = 0;
+
+        if ()
+        {
+            
+        }
+        
+        int vs ;//= pesquisa(s,hasNode);
+        pair<
+        
+    }
+}
+
+// Dijkstra(G, s)
+//      Para cada vértice v
+//              dist[v] = infinito
+//       Define conjunto S = 0 // inicia vazio
+//       dist[s] = 0
+//       Enquanto S != V
+//          Selecione u em V-S, tal que dist[u] é mínima       *
+//          Adicione u em S
+//          Para cada vizinho v de u faça
+//              Se dist[v] > dist[u] + w(u,v) então
+//                  dist[v] = dist[u] + w(u,v)
+//Retorna dist[]
+
+
 
 void Grafo::MST(int inicio){
     
