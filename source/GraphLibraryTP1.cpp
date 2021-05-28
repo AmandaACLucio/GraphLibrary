@@ -177,6 +177,22 @@ vector<vector<int>> Grafo::BFS(int raiz)
         nivelValue=nivel.at(pai.at(explorado))+1;
 
 
+vetorVetorAdjacencias -> O(1)
+listaVetorAdjacencias -> O(1) .... next = null
+estruraGrafo.at(2).size()
+estruturaGrafo.at(v, i).vizinho
+v=1
+estruturaGrafo.at(v)->next = null;
+for(int i=0; i<estruraGrafo.at(v).size(); i++){
+
+    int w = estruturaGrafo.at(v, i).vizinho;
+    w = w.next();
+}
+
+
+
+
+
 /////////////////////criar função para retornar tamanho de acordo com a posição
 //////////////////// criar função para retornar o filho em determinada posição de um nó em dada posição ou vetor de filhos
 //////////////////// se escolher a primeira posição a gnt fazer em n ao invés de 2n aqui dentro, mas a linked list vai ficar prejudicada
@@ -358,51 +374,6 @@ bool Grafo::MesmaComponente(int nodeUm, int nodeDois){
     }
     return true;
 }
-/*
-vector<int> Grafo::Dijkstra(int nodeUm, int nodeDois){
-    int infinito = 99999999;
-    //float distancia[numberNodes];
-    vector<pair<int,float>> distancia;
-    vector<bool> s;
-    vector<int> pai;
-
-    for (int i = 0; i < numberNodes; i++)
-    {
-        distancia[i].second = infinito;
-        s.at(i) = false;
-    }
-    distancia[nodeUm] = 0;
-    make_heap(distancia.begin(), distancia.end(),  std::greater<>{});
-    while (s!=hasNode)
-    {
-        int ultimo = distancia.back();
-        distancia.pop_back();
-        int distanciaMinima = 0;
-
-        if ()
-        {
-            
-        }
-        
-        int vs ;//= pesquisa(s,hasNode);
-        pair<
-        
-    }
-    
-// Dijkstra(G, s)
-//      Para cada vértice v
-//              dist[v] = infinito
-//       Define conjunto S = 0 // inicia vazio
-//       dist[s] = 0
-//       Enquanto S != V
-//          Selecione u em V-S, tal que dist[u] é mínima       *
-//          Adicione u em S
-//          Para cada vizinho v de u faça
-//              Se dist[v] > dist[u] + w(u,v) então
-//                  dist[v] = dist[u] + w(u,v)
-//Retorna dist[]
-
-}*/
 
 int main(){
 
@@ -415,12 +386,17 @@ int main(){
     cout << v1.front() << endl;
 
 
+<<<<<<< HEAD
 
     Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
     //grafo.estruturaGrafo->show(true);
 
 
 
+=======
+    Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
+    //grafo.estruturaGrafo->show(true);
+>>>>>>> 2476aa9d1ea938e8acdef998665f08074776c86d
 
 /*
     Grafo grafo("source/grafo_W_1.txt",1,true,false);
