@@ -86,7 +86,6 @@ int MaximoVector(vector<int> vetor){
             maximo = vetor.at(i);
         }
     }
-
     return maximo;
 }
 

@@ -37,6 +37,7 @@ Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
 void Grafo::Entrada(string filename)
 {
     cout<<"Entrada"<<endl;
+    int maior = 0;
     const char * filenameChar = filename.c_str();
     ifstream arquivoEntrada(filenameChar); // Abri arquivo para leitura
     int quantidadeDeVertices, valorUm, valorDois;
@@ -51,6 +52,9 @@ void Grafo::Entrada(string filename)
 
         if (peso) {
             while(arquivoEntrada>>valorUm>>valorDois>>newPeso){
+
+                if(valorUm>maior){maior = valorUm;}
+                if(valorDois>maior){maior=valorDois;}
                 
                 if(valorUm!=valorDois){
 
@@ -64,7 +68,8 @@ void Grafo::Entrada(string filename)
                         graus[valorDois]=graus[valorDois]+1;
                     }
                 }
-            }                         
+            }
+            cout<<"Valor maior = "<<maior<<endl;                         
         }else{
             while(arquivoEntrada>>valorUm>>valorDois){
                 cout<<"Sem peso"<<endl;
@@ -358,8 +363,8 @@ int main(){
 
     VectorVetorAdjacencia estrutura;
 
-    Grafo grafo("source/maxPeso.txt",3,true,false);
-    grafo.estruturaGrafo->show(true);
+    Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
+    //grafo.estruturaGrafo->show(true);
 
 /*
      int estrutura = 1;

@@ -42,7 +42,7 @@ class Grafo
     //TP2
     vector<int> Dijkstra(int nodeUm, int nodeDois); //caminho mínimo
     int Distancia(int nodeUm, int nodeDois, bool peso); //usando Dijkstra
-    void MST(); //escrita no formato de grafo em um arquivo de saída
+    void MST(int inicio=1); //escrita no formato de grafo em um arquivo de saída
     int Excentricidade(int nodeUm, int nodeDois);
 
 };

@@ -76,9 +76,6 @@ void MatrizAdjacencia::show(bool weight){
             cout<<endl;
         }         
     }
-
-
-    
 }
 
 
