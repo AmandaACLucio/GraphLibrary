@@ -415,21 +415,12 @@ int main(){
     cout << v1.front() << endl;
 
 
-<<<<<<< HEAD
 
-
-<<<<<<< HEAD
     Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
     //grafo.estruturaGrafo->show(true);
-=======
 
 
-=======
-    Grafo grafo("source/maxPeso.txt",3,true,false);
-    grafo.estruturaGrafo->show(true);
->>>>>>> fab2a9af80fe90d317a632f56dd54b6d0c7c547c
 
->>>>>>> 2e3a609dfb2ebd3ee8c81c4103998a21e9f7481d
 
 /*
     Grafo grafo("source/grafo_W_1.txt",1,true,false);

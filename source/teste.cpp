@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <functional>
 #include <string_view>
+#include <set>
 
 using namespace std;
 
@@ -16,15 +17,15 @@ int main()
     int infinito = 99999999;
     vector<bool> hasNode;
 
-    vector<pair<float,int>> distancia; //fist: peso second: no
+    set<pair<float,int>> distancia; //fist: peso second: no
     vector<bool> s;
 
-    distancia.push_back({9,0});
-    distancia.push_back({5.2,1});
-    distancia.push_back({1.5,2});
-    distancia.push_back({8.4,3});
-    distancia.push_back({3.4,4});
-    distancia.push_back({9.4,5});
+    distancia.insert({9,0});
+    distancia.insert ({5.2,1});
+    distancia.insert ({1.5,2});
+    distancia.insert ({8.4,3});
+    distancia.insert ({3.4,4});
+    distancia.insert ({9.4,5});
     
     cout<<endl<<endl<<"*** Antes do make_heap ***"<<endl;
     for (auto i : distancia) cout <<"Vertice: "<< i.second <<" peso: "<< i.first << ' ';
