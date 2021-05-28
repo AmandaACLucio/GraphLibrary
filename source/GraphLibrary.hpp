@@ -30,7 +30,7 @@ class Grafo
     Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado);
     void Entrada(string fileEntrada);
 
-    void Saida(string fileSaida);
+    void Saida(string fileSaida="temp.txt");
     vector<vector<int>> BFS(int raiz);
     vector<vector<int>> DFS(int raiz);
     int Grau(int vertice);
