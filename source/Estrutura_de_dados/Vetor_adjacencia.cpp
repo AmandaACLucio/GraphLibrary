@@ -171,9 +171,13 @@ pair <int,float> VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posica
     pair <int, float> dupla;
     int vizinho;
     float pesoVertice;
-    int sizeValue = sizeVertice(vertice);
+    int sizeValue = sizeVertice(vertice)-1;
 
-    if(posicaoVizinho>=sizeValue || vertice>=sizeValue){
+    cout<<endl<<"****  Posicaovizinho: "<<posicaoVizinho<<endl;
+    cout<<endl<<"****  vertice: "<<vertice<<endl;
+    cout<<endl<<"****  sizeValue: "<<sizeValue<<endl;
+
+    if((posicaoVizinho>=sizeValue) || (vertice>=sizeValue)){
         pesoVertice = nan("");
         dupla = {-1, pesoVertice};
     }else{

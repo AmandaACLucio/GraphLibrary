@@ -21,6 +21,7 @@
 
 int main(){
 
+<<<<<<< HEAD
     VectorListaAdjacencia Vetordelista;
     
 
@@ -49,7 +50,35 @@ int main(){
     valor = Vetordelista.vizinhoDeVertice(1, 4, true);
     cout<< "O vizinho de 1 na posição 4 é "<<valor.first<<" com peso "<<valor.second<<endl;
     
+=======
+    //Grafo grafo("source/grafo_W_1.txt",2,true,false);
 
+    MatrizAdjacencia vec;
+    getchar();
+>>>>>>> 927c537e95a693f65ad94dadcd3e812c4d3bc30e
+
+    vec.setSize(10);
+    
+    vec.addAresta(1,2,1.56);
+    vec.addAresta(2,1,1.56);
+
+
+    vec.addAresta(2,4,4.56);
+    vec.addAresta(2,3,7.20);
+    vec.addAresta(3,8,0.56);
+    vec.addAresta(4,8,2.56);
+    getchar();
+
+    vec.show(true);
+
+    pair <int, float> i = vec.vizinhoDeVertice(1,1,true);
+    cout<<"Vertice: "<<i.first<<" Peso: "<<i.second<<endl;
+
+    pair <int, float> o = vec.vizinhoDeVertice(1,2,true);
+    cout<<"Vertice: "<<o.first<<" Peso: "<<o.second<<endl;
+
+    pair <int, float> p = vec.vizinhoDeVertice(1,3,true);
+    cout<<"Vertice: "<<p.first<<" Peso: "<<p.second<<endl;
 
     /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
         
@@ -140,7 +169,7 @@ int main(){
 /*
     Grafo grafo("source/grafo_W_1.txt",1,true,false);
     grafo.estruturaGrafo->show(true);
-/*
+
      int estrutura = 1;
     clock_t inicio, fim;
     inicio= clock();
