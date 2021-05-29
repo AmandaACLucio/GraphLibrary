@@ -36,12 +36,14 @@ void NodeList::add(NodeList* data){
 ListaAdjacencia::ListaAdjacencia(){
     top = NULL;
     last = NULL;
+    nextIterator = NULL;
     sizeLista = 0;
-}   
+}
 
 ListaAdjacencia::ListaAdjacencia(int node){
     top = new NodeList(node);
     last = top;
+    nextIterator = top;
     sizeLista = 0;
 }
 
@@ -140,9 +142,18 @@ int ListaAdjacencia::size(){
 }
 
 NodeList* ListaAdjacencia::getNodePosition(int position){
+
+    if(position>sizeLista){
+        return nextIterator;
+    }
+    
     
     if(position<iterator){
         iterator = 0;
+        nextIterator = top;
+    }
+
+    if(nextIterator==NULL){
         nextIterator = top;
     }
 
@@ -151,6 +162,7 @@ NodeList* ListaAdjacencia::getNodePosition(int position){
         int node = nextIterator->get();
         float weightNode = nextIterator->weight;
         nextIterator = nextIterator->get_next();
+        iterator++;
     }
     return nextIterator;
 
@@ -164,7 +176,7 @@ NodeList* ListaAdjacencia::getTop(){
 //Pra se tornar mais eficiente ele deveria modificar o vetor de lista, custando menos memoria assim
 
 void VectorListaAdjacencia::setSize(int newSizeVector){
-    size = newSizeVector; //size será a quantidade de nós
+    size = newSizeVector+1; //size será a quantidade de nós
     vetorDeListas = Popular(vetorDeListas,0 ,newSizeVector);
 }
 
@@ -192,7 +204,7 @@ int VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
     int vizinho;
     int sizeValue = sizeVertice(vertice);
 
-    if(posicaoVizinho>=sizeValue || vertice>=sizeValue){
+    if(posicaoVizinho>sizeValue || vertice>sizeValue){
         vizinho = -1;
     }else{
         NodeList* nodeVizinho = vetorDeListas.at(vertice).getNodePosition(posicaoVizinho);
@@ -209,7 +221,7 @@ pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posica
     float pesoVertice;
     int sizeValue = sizeVertice(vertice);
 
-    if(posicaoVizinho>=sizeValue || vertice>=sizeValue){
+    if(posicaoVizinho>sizeValue || vertice>sizeValue){
         pesoVertice = nan("");
         dupla = {-1, pesoVertice};
     }else{

@@ -21,21 +21,48 @@
 
 int main(){
 
+    VectorListaAdjacencia Vetordelista;
+    
+
+    Vetordelista.setSize(4);
+
+
+    Vetordelista.addAresta(1,3,2.1);
+    Vetordelista.addAresta(3,1,2.1);        
+    Vetordelista.addAresta(1,4,1.7);
+    Vetordelista.addAresta(4,1,1.7);
+    Vetordelista.addAresta(2,3,4.1);
+    Vetordelista.addAresta(3,2,4.1);
+    Vetordelista.addAresta(4,2,1.5);
+    Vetordelista.addAresta(2,4,1.5);
+    Vetordelista.show(true);
+    pair<int, float> valor = Vetordelista.vizinhoDeVertice(2, 1, true);
+    cout<< "O vizinho de 2 na posição 1 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    valor = Vetordelista.vizinhoDeVertice(2, 0, true);
+    cout<< "O vizinho de 2 na posição 0 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    valor = Vetordelista.vizinhoDeVertice(2, 2, true);
+    cout<< "O vizinho de 2 na posição 2 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    valor = Vetordelista.vizinhoDeVertice(3, 2, true);
+    cout<< "O vizinho de 3 na posição 2 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    valor = Vetordelista.vizinhoDeVertice(4, 3, true);
+    cout<< "O vizinho de 4 na posição 3 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    valor = Vetordelista.vizinhoDeVertice(1, 4, true);
+    cout<< "O vizinho de 1 na posição 4 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    
+
+
+    /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
+        
+        // Converting vector into a heap
+        // using make_heap()
+        make_heap(v1.begin(), v1.end(),  greater<>{});
+        cout << "The maximum element of heap is : ";
+        cout << v1.front() << endl;
 
 
 
-/*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
-      
-    // Converting vector into a heap
-    // using make_heap()
-    make_heap(v1.begin(), v1.end(),  greater<>{});
-    cout << "The maximum element of heap is : ";
-    cout << v1.front() << endl;
-
-
-
-    Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
- */    
+        Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
+    */    
 
 
     /////////NÃO DELETAR DAQUI PRA BAIXO ////////////
