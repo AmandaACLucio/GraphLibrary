@@ -21,7 +21,6 @@
 
 int main(){
 
-<<<<<<< HEAD
     VectorListaAdjacencia Vetordelista;
     
 
@@ -37,48 +36,17 @@ int main(){
     Vetordelista.addAresta(4,2,1.5);
     Vetordelista.addAresta(2,4,1.5);
     Vetordelista.show(true);
-    pair<int, float> valor = Vetordelista.vizinhoDeVertice(2, 1, true);
-    cout<< "O vizinho de 2 na posição 1 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    valor = Vetordelista.vizinhoDeVertice(2, 0, true);
-    cout<< "O vizinho de 2 na posição 0 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    valor = Vetordelista.vizinhoDeVertice(2, 2, true);
+    pair<int, float> valor = Vetordelista.vizinhoDeVertice(5, 2, true);
     cout<< "O vizinho de 2 na posição 2 é "<<valor.first<<" com peso "<<valor.second<<endl;
     valor = Vetordelista.vizinhoDeVertice(3, 2, true);
     cout<< "O vizinho de 3 na posição 2 é "<<valor.first<<" com peso "<<valor.second<<endl;
     valor = Vetordelista.vizinhoDeVertice(4, 3, true);
     cout<< "O vizinho de 4 na posição 3 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    valor = Vetordelista.vizinhoDeVertice(1, 4, true);
-    cout<< "O vizinho de 1 na posição 4 é "<<valor.first<<" com peso "<<valor.second<<endl;
+    valor = Vetordelista.vizinhoDeVertice(1, 1, true);
+    cout<< "O vizinho de 1 na posição 1 é "<<valor.first<<" com peso "<<valor.second<<endl;
     
-=======
     //Grafo grafo("source/grafo_W_1.txt",2,true,false);
 
-    MatrizAdjacencia vec;
-    getchar();
->>>>>>> 927c537e95a693f65ad94dadcd3e812c4d3bc30e
-
-    vec.setSize(10);
-    
-    vec.addAresta(1,2,1.56);
-    vec.addAresta(2,1,1.56);
-
-
-    vec.addAresta(2,4,4.56);
-    vec.addAresta(2,3,7.20);
-    vec.addAresta(3,8,0.56);
-    vec.addAresta(4,8,2.56);
-    getchar();
-
-    vec.show(true);
-
-    pair <int, float> i = vec.vizinhoDeVertice(1,1,true);
-    cout<<"Vertice: "<<i.first<<" Peso: "<<i.second<<endl;
-
-    pair <int, float> o = vec.vizinhoDeVertice(1,2,true);
-    cout<<"Vertice: "<<o.first<<" Peso: "<<o.second<<endl;
-
-    pair <int, float> p = vec.vizinhoDeVertice(1,3,true);
-    cout<<"Vertice: "<<p.first<<" Peso: "<<p.second<<endl;
 
     /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
         

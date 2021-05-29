@@ -95,11 +95,6 @@ pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizi
     float pesoVertice;
     int sizeValue = sizeVertice(vertice);
 
-
-    cout<<endl<<"****  Posicaovizinho: "<<posicaoVizinho<<endl;
-    cout<<endl<<"****  vertice: "<<vertice<<endl;
-    cout<<endl<<"****  sizeValue: "<<sizeValue<<endl;
-
     if((posicaoVizinho>=sizeValue) || (vertice>=sizeValue)){
         cout<<endl<<"##### Entrou no if ######"<<endl;
         pesoVertice = nan("");

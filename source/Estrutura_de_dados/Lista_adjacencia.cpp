@@ -44,7 +44,7 @@ ListaAdjacencia::ListaAdjacencia(int node){
     top = new NodeList(node);
     last = top;
     nextIterator = top;
-    sizeLista = 0;
+    sizeLista = 1;
 }
 
 bool ListaAdjacencia::add(int data){
@@ -176,7 +176,7 @@ NodeList* ListaAdjacencia::getTop(){
 //Pra se tornar mais eficiente ele deveria modificar o vetor de lista, custando menos memoria assim
 
 void VectorListaAdjacencia::setSize(int newSizeVector){
-    size = newSizeVector+1; //size será a quantidade de nós
+    size = newSizeVector; //size será a quantidade de nós
     vetorDeListas = Popular(vetorDeListas,0 ,newSizeVector);
 }
 
@@ -204,7 +204,7 @@ int VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
     int vizinho;
     int sizeValue = sizeVertice(vertice);
 
-    if(posicaoVizinho>sizeValue || vertice>sizeValue){
+    if(sizeValue ==-1 || posicaoVizinho+1>sizeValue){
         vizinho = -1;
     }else{
         NodeList* nodeVizinho = vetorDeListas.at(vertice).getNodePosition(posicaoVizinho);
@@ -221,7 +221,7 @@ pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posica
     float pesoVertice;
     int sizeValue = sizeVertice(vertice);
 
-    if(posicaoVizinho>sizeValue || vertice>sizeValue){
+    if(sizeValue ==-1 || posicaoVizinho>=sizeValue){
         pesoVertice = nan("");
         dupla = {-1, pesoVertice};
     }else{
@@ -235,6 +235,12 @@ pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posica
 }
 
 int VectorListaAdjacencia::sizeVertice(int vertice){
-    int sizeValue = vetorDeListas.at(vertice).size()+1;
+    cout<<"Vertice "<<vertice<<endl;
+    cout<<"Vertice "<<vetorDeListas.size()<<endl;
+
+    if(vertice>=vetorDeListas.size()){
+        return -1;
+    }
+    int sizeValue = vetorDeListas.at(vertice).size();
     return sizeValue;
 }
