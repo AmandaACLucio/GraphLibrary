@@ -13,7 +13,7 @@ MatrizAdjacencia::MatrizAdjacencia(){
 
 void MatrizAdjacencia::setSize(int numeroVertices){
 
-    size = numeroVertices;
+    size = numeroVertices+1;
 }
 
 bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois){
@@ -93,17 +93,33 @@ pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizi
 
     pair <int, float> dupla;
     float pesoVertice;
+    int sizeValue = sizeVertice(vertice);
 
 
-    if(posicaoVizinho>=size || vertice>=size){
+    cout<<endl<<"****  Posicaovizinho: "<<posicaoVizinho<<endl;
+    cout<<endl<<"****  vertice: "<<vertice<<endl;
+    cout<<endl<<"****  sizeValue: "<<sizeValue<<endl;
+
+    if((posicaoVizinho>=sizeValue) || (vertice>=sizeValue)){
+        cout<<endl<<"##### Entrou no if ######"<<endl;
         pesoVertice = nan("");
         dupla = {-1, pesoVertice};
+    }else{
+        cout<<endl<<"##### Entrou no else primeiro if ######"<<endl;
+
+        pesoVertice= matrizWeight[vertice][posicaoVizinho];
+        dupla = {posicaoVizinho, pesoVertice};
+        return dupla;
     }
 
     if(isnan(matrizWeight[vertice][posicaoVizinho]) && isnan(matrizWeight[posicaoVizinho][vertice])){
+        cout<<endl<<"##### Entrou no if isnan ######"<<endl;
+
         pesoVertice= matrizWeight[vertice][posicaoVizinho];
         dupla = {-1, pesoVertice};
     }else{
+        cout<<endl<<"##### Entrou no else de  isnan ######"<<endl;
+
         pesoVertice= matrizWeight[vertice][posicaoVizinho];
         dupla = {posicaoVizinho, pesoVertice};
     }

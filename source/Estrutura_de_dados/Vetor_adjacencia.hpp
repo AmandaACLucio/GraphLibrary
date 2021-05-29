@@ -27,7 +27,7 @@ class VetorAdjacencia
 
     public:
         vector<NodeVec> nodes;
-        
+
         VetorAdjacencia();
         VetorAdjacencia(int node);
         VetorAdjacencia(int node, float peso);
