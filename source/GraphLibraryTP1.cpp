@@ -46,9 +46,12 @@ void Grafo::Entrada(string filename)
 
     if (arquivoEntrada.is_open()) {
 
-        arquivoEntrada >> quantidadeDeVertices;
+        arquivoEntrada >> numberNodes;
+        cout<<"numberNodes "<<numberNodes<<endl;
 
-        estruturaGrafo->setSize(quantidadeDeVertices);
+        getchar();
+
+        estruturaGrafo->setSize(numberNodes);
 
         if (peso) {
             while(arquivoEntrada>>valorUm>>valorDois>>newPeso){
@@ -61,6 +64,7 @@ void Grafo::Entrada(string filename)
                     //se fizer a adição teremos um true
                     realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois, newPeso);
                     if (direcionado==false) estruturaGrafo->addAresta(valorDois, valorUm, newPeso); 
+
 
                     if(realizouAdicao){
                         numberArestas+=1;
@@ -92,8 +96,6 @@ void Grafo::Entrada(string filename)
             }
         }
 
-        cout<<"numberNodes: "<<numberNodes<<endl;
-        cout<<"grausSize: "<<graus.size()<<endl;
         arquivoEntrada.close();
     }else{
         cout << "ERRO: arquivo não foi aberto ou não existe" << endl;
@@ -110,23 +112,25 @@ void Grafo::Saida(string fileSaida)
     vector<int> grausList;
     int grauMinimo, grauMaximo = 0, sumGraus=0, grauMedio, pontoMediana, grauMediana;
 
-    cout<<"ponto 1"<<endl;
+    cout<<numberNodes<<endl;
     
     for(int i=1; i<=numberNodes; i++){
-
+        
         int grauNode = graus[i];
 
         sumGraus+=grauNode;
         grausList.push_back(grauNode);
     }
 
-    cout<<"ponto 1"<<endl;
-
     sort (grausList.begin(), grausList.end()); //ordena para calcular mediana
 
+
     grauMinimo=grausList.at(0);
+    cout<<"ponto 1.1"<<endl;
     grauMaximo=grausList.at(grausList.size()-1);
+    cout<<"ponto 1.2"<<endl;
     grauMedio = sumGraus/numberNodes;
+    cout<<"ponto 2"<<endl;
     
     if(numberNodes%2==1){
         pontoMediana=(numberNodes-1)/2;
@@ -260,16 +264,20 @@ int Grafo::Grau(int vertice)
 }
 
 
-int Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
+float Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
 {
     //se não for da mesma componente retorna -1 = infinito
     vector<int> nivel;
+    float distancia;
 
     if(MesmaComponente(nodeUm, nodeDois)){
 
-        nivel =  BFS(nodeUm).at(1);
-
-        int distancia = nivel.at(nodeDois);
+        if(peso){            
+            distancia = Dijkstra(nodeUm, nodeDois).first;
+        }else{
+            nivel =  BFS(nodeUm).at(1);
+            distancia = nivel.at(nodeDois);
+        }
 
         return distancia;
     }

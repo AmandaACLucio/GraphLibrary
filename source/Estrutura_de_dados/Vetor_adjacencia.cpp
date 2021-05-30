@@ -65,6 +65,13 @@ bool VetorAdjacencia::add(int node){
 }
 
 bool VetorAdjacencia::add(int node, float peso){
+
+
+    if(peso<0){
+        cout<<"Peso negativo não inserido"<<endl;
+        return false;
+    }
+
     NodeVec nodeTemp(node, peso);
     if(!search(node)){ //só adiciona se o nó não existir ainda
         if(sizeVetor==0){

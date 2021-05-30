@@ -22,9 +22,9 @@
 int main(){
 
     
-    Grafo grafo("./Dados/grafo_W_1.txt",1,true,false);
-
-    grafo.Saida();
+    Grafo grafo("./Dados/teste2.txt",1,true,false);
+    
+    cout<<grafo.Excentricidade(1);
 
 
     /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};

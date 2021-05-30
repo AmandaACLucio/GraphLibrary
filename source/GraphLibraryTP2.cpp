@@ -18,93 +18,130 @@
 using namespace std;
 
 
-
-void Grafo::Dijkstra(int nodeUm, int nodeDois, string filesaida){
+pair<float, vector<float>> Grafo::Dijkstra(int nodeUm, int nodeDois, string filesaida){
     
-    //float distancia[numberNodes];
-    set<pair<int,float>> distancia; //first ->vertice, second ->peso
+    vector<bool> explorados;
+    pair<float, vector<float>> retorno;
+    set<pair<float, int>> distancia; //first 
     vector<pair<int,float>> pai; 
     vector<int> nivel;
-    int distanciaOrigem[numberNodes+1]; 
+    vector<float> distanciaOrigem; 
 
     for (int j = 0; j < numberNodes+1; j++){
-        int infinito = INFINITO;
-        distanciaOrigem[j] = infinito;
+        distanciaOrigem.push_back(INFINITO);
         nivel.push_back(0);
         pai.push_back({0, 0});
+        explorados.push_back(false);
     }
-    distancia.insert({nodeUm, 0});
+
+    distanciaOrigem.at(nodeUm) = 0;
+    distancia.insert({0, nodeUm});
+
+    pai.at(nodeUm).first = 0;
+    pai.at(nodeUm).second = nan("");
+
     while (!distancia.empty())
     {
-        int minVertice = distancia.begin()->first;
-        int minPeso = distancia.begin()->second;
+        int minVertice = distancia.begin()->second;
+        int minPeso = distancia.begin()->first;
 
         distancia.erase(distancia.begin());
         
         int endFor= estruturaGrafo->sizeVertice(minVertice);
 
+        explorados.at(minVertice) = true;
+
         for (int i = 0; i < endFor; i++)
         {
             //caso não tenho um viznho na posição i, a função vizinhoDeVertice retorna {-1, NAN}
-            pair<int, float> node = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
-            if (node.first !=-1 && (distanciaOrigem[node.first] > (minPeso + node.second)) )
-            {
-                distanciaOrigem[node.first] = (minPeso + node.second);
-                distancia.insert({node.first, distanciaOrigem[node.first]});
-                pai.at(node.first).first=minPeso;
-                pai.at(node.first).second=node.second;
-                nivel.at(node.first)+=1;
+            pair<int, float> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
+
+            if(vizinho.first == -1){
+                cout<< "Loop fora de range"<<endl;
             }
-        }
-        
+
+            if (vizinho.first !=-1 && !explorados[vizinho.first] && (distanciaOrigem.at(vizinho.first)> (distanciaOrigem.at(minVertice) + vizinho.second)) )
+            {
+
+                pai.at(vizinho.first).first=minVertice;
+                pai.at(vizinho.first).second=vizinho.second;
+
+                nivel.at(vizinho.first)+=1;
+
+                distanciaOrigem.at(vizinho.first) = distanciaOrigem.at(minVertice) + vizinho.second;
+
+                distancia.insert({distanciaOrigem.at(vizinho.first), vizinho.first});
+
+            }
+        }   
     }
 
-    EscreveNovoGrafo(pai, nivel, filesaida);
+
+    float custoTotal=distanciaOrigem.at(nodeDois);
+
+    EscreveNovoGrafo(pai, nivel, filesaida, custoTotal);
+
+    retorno.first= custoTotal;
+    retorno.second = distanciaOrigem;
+    
+    return(retorno);
 
 }
 
 void Grafo::MST(int inicio, string filesaida){
     
-    int tamanhoComponente, idComponente;
     vector<int> nivel;
-    bool descoberto[numberNodes+1];
+    vector<bool> explorados;
     vector<pair<int,float>> pai;
-    set<pair<int,float>> distancia; //first ->vertice, second ->peso
+    set<pair<float, int>> distancia; //first ->vertice, second ->peso
     float custoTotal = 0; 
 
     for (int vertice = 0; vertice < numberNodes+1; vertice++){
         pai.push_back({-1, INFINITO});
         nivel.push_back(0);
+        explorados.push_back(false);
     }
  
-    distancia.insert({inicio, 0});
+    distancia.insert({0, inicio});
+    pai.at(inicio).first = 0;
+    pai.at(inicio).second = nan("");
 
     //verificar se todos os nós já foram explorados
     while(!distancia.empty()){
         
-        int minVertice = distancia.begin()->first;
-        int minPeso = distancia.begin()->second;
+        int minVertice = distancia.begin()->second;
+        int minPeso = distancia.begin()->first;
 
         distancia.erase(distancia.begin());
 
         int endFor= estruturaGrafo->sizeVertice(minVertice);
-        descoberto[minVertice] = true;
+
+        explorados.at(minVertice) = true;
 
         for (int i = 0; i < endFor; i++){
 
             //caso não tenho um viznho na posição i, a função vizinhoDeVertice retorna {-1, NAN}
             pair<int, float> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
 
-            if(vizinho.first != -1){
+
+            if(vizinho.first == -1){
                 cout<< "Loop fora de range"<<endl;
             }
             
-            if (vizinho.first !=-1 && !descoberto[vizinho.first] && ((pai.at(vizinho.first).second) > (vizinho.second)) )
+
+            if (vizinho.first !=-1 && !explorados[vizinho.first] && ((pai.at(vizinho.first).second) > (vizinho.second)) )
             {
-                pai.at(vizinho.first)={minVertice, pai.at(vizinho.first).second};
+
+                pai.at(vizinho.first).first=minVertice;
+                pai.at(vizinho.first).second=vizinho.second;
+
                 nivel.at(vizinho.first)=nivel.at(minVertice)+1;
+
+                distancia.insert({vizinho.second, vizinho.first});
             }          
         }
+    
+
     }
 
     //calculo custo total da MST
@@ -115,11 +152,13 @@ void Grafo::MST(int inicio, string filesaida){
         }
     }
 
-    EscreveNovoGrafo(pai, nivel, filesaida);
+    cout<<"Custo Total: "<<custoTotal;
+
+    EscreveNovoGrafo(pai, nivel, filesaida, custoTotal);
 
 }
 
-void Grafo::EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, string filesaida){
+void Grafo::EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, string filesaida, int custoTotal){
 
     const char * filenameChar = filesaida.c_str();
     ofstream arquivoCC (filenameChar);
@@ -135,13 +174,40 @@ void Grafo::EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, str
             
             valueDois=pai.at(valueUm).first;
             pesoAresta=pai.at(valueUm).second;
-            cout<<valueUm<<" "<<valueDois<<" "<<pesoAresta<<endl;
+            if(valueDois!=-1){
+                arquivoCC<<valueUm<<" "<<valueDois<<" "<<pesoAresta<<endl;
+            }
 
         }
-
+        
+        arquivoCC<<"Custo Total: "<<custoTotal<<endl;
     }else{
         cout << "Erro ao criar arquivo de Saída."<<endl;        
     }
     arquivoCC.close();
 }
 
+float Grafo::Excentricidade(int vertice){
+
+    bool mesmaComponente=false;
+    int verticeDois=2;
+    float excentricidade=0;
+    vector<float> distanciaOrigem;
+
+    while(!mesmaComponente){
+        if(verticeDois!=vertice){
+            mesmaComponente = MesmaComponente(vertice, verticeDois);
+            distanciaOrigem = Dijkstra(vertice, verticeDois).second;
+            verticeDois++;
+        }
+    }
+
+    for(int i=0; i<distanciaOrigem.size(); i++){
+        if((distanciaOrigem.at(i)>excentricidade) && (distanciaOrigem.at(i)!=INFINITO)){
+            excentricidade = distanciaOrigem.at(i);
+        }
+    }
+
+    return excentricidade;
+
+}

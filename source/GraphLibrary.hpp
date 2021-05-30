@@ -34,16 +34,15 @@ class Grafo
     vector<vector<int>> BFS(int raiz);
     vector<vector<int>> DFS(int raiz);
     int Grau(int vertice);
-    int Distancia(int nodeUm, int nodeDois);
+    float Distancia(int nodeUm, int nodeDois); //alterado para aceitar peso
     void Diametro();
     vector<vector<int>> ComponentesConexas(string filesaida="graphComponentesConexas.txt");
     bool MesmaComponente(int nodeUm, int nodeDois);
 
     //TP2
-    void Dijkstra(int nodeUm, int nodeDois, string filesaida="Dijkstra.txt"); //caminho mínimo
-    int Distancia(int nodeUm, int nodeDois, bool peso); //usando Dijkstra
+    pair<float, vector<float>> Dijkstra(int nodeUm, int nodeDois, string filesaida="Dijkstra.txt"); //caminho mínimo
     void MST(int inicio=1, string filesaida="MST.txt"); //escrita no formato de grafo em um arquivo de saída
-    int Excentricidade(int nodeUm, int nodeDois);
-    void EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, string filesaida);
+    float Excentricidade(int nodeUm);
+    void EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, string filesaida, int custoTotal);
 
 };

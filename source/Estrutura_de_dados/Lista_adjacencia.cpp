@@ -88,6 +88,13 @@ bool ListaAdjacencia::sortedInsert(int data){
 }
 
 bool ListaAdjacencia::sortedInsert(int data, float newWeight){ 
+
+    
+    if(newWeight<0){
+        cout<<"Peso negativo não inserido"<<endl;
+        return false;
+    }
+
     if(!search(data)){
 
         NodeList* node = new NodeList(data, newWeight);
@@ -193,7 +200,7 @@ bool VectorListaAdjacencia::addAresta(int valor1, int valor2, float weight){
 }
 
 void VectorListaAdjacencia::show(bool weight){
-    for(int i = 0; i<size; i++){
+    for(int i = 0; i<=size; i++){
         cout<<endl<<"lista "<<i<<" :";
         vetorDeListas.at(i).show();
     }
@@ -235,8 +242,6 @@ pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posica
 }
 
 int VectorListaAdjacencia::sizeVertice(int vertice){
-    cout<<"Vertice "<<vertice<<endl;
-    cout<<"Vertice "<<vetorDeListas.size()<<endl;
 
     if(vertice>=vetorDeListas.size()){
         return -1;
