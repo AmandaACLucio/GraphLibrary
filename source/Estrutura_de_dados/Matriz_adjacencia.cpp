@@ -109,6 +109,7 @@ pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizi
         cout<<endl<<"##### Entrou no else primeiro if ######"<<endl;
 
         pesoVertice= matrizWeight[vertice][posicaoVizinho];
+        cout<<endl<<"##### Peso do vizinho no primeiro:  "<<pesoVertice<<endl;
         dupla = {posicaoVizinho, pesoVertice};
         return dupla;
     }
