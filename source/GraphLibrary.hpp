@@ -30,19 +30,20 @@ class Grafo
     Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado);
     void Entrada(string fileEntrada);
 
-    void Saida(string fileSaida="temp.txt");
+    void Saida(string fileSaida="graphSaida.txt");
     vector<vector<int>> BFS(int raiz);
     vector<vector<int>> DFS(int raiz);
     int Grau(int vertice);
     int Distancia(int nodeUm, int nodeDois);
     void Diametro();
-    vector<vector<int>> ComponentesConexas(string filesaida="temp.txt");
+    vector<vector<int>> ComponentesConexas(string filesaida="graphComponentesConexas.txt");
     bool MesmaComponente(int nodeUm, int nodeDois);
 
     //TP2
-    vector<int> Dijkstra(int nodeUm, int nodeDois); //caminho mínimo
+    void Dijkstra(int nodeUm, int nodeDois, string filesaida="Dijkstra.txt"); //caminho mínimo
     int Distancia(int nodeUm, int nodeDois, bool peso); //usando Dijkstra
-    void MST(int inicio=1); //escrita no formato de grafo em um arquivo de saída
+    void MST(int inicio=1, string filesaida="MST.txt"); //escrita no formato de grafo em um arquivo de saída
     int Excentricidade(int nodeUm, int nodeDois);
+    void EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, string filesaida);
 
 };

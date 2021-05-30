@@ -91,6 +91,9 @@ void Grafo::Entrada(string filename)
                 }
             }
         }
+
+        cout<<"numberNodes: "<<numberNodes<<endl;
+        cout<<"grausSize: "<<graus.size()<<endl;
         arquivoEntrada.close();
     }else{
         cout << "ERRO: arquivo não foi aberto ou não existe" << endl;
@@ -106,6 +109,8 @@ void Grafo::Saida(string fileSaida)
 
     vector<int> grausList;
     int grauMinimo, grauMaximo = 0, sumGraus=0, grauMedio, pontoMediana, grauMediana;
+
+    cout<<"ponto 1"<<endl;
     
     for(int i=1; i<=numberNodes; i++){
 
@@ -114,6 +119,8 @@ void Grafo::Saida(string fileSaida)
         sumGraus+=grauNode;
         grausList.push_back(grauNode);
     }
+
+    cout<<"ponto 1"<<endl;
 
     sort (grausList.begin(), grausList.end()); //ordena para calcular mediana
 

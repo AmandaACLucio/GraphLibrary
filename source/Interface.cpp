@@ -21,46 +21,24 @@
 
 int main(){
 
-    //Grafo grafo("source/grafo_W_1.txt",2,true,false);
-
-    MatrizAdjacencia vec;
-    getchar();
-
-    vec.setSize(10);
     
-    vec.addAresta(1,2,1.56);
-    vec.addAresta(2,1,1.56);
+    Grafo grafo("./Dados/grafo_W_1.txt",1,true,false);
+
+    grafo.Saida();
 
 
-    vec.addAresta(2,4,4.56);
-    vec.addAresta(2,3,7.20);
-    vec.addAresta(3,8,0.56);
-    vec.addAresta(4,8,2.56);
-    getchar();
-
-    vec.show(true);
-
-    pair <int, float> i = vec.vizinhoDeVertice(1,1,true);
-    cout<<"Vertice: "<<i.first<<" Peso: "<<i.second<<endl;
-
-    pair <int, float> o = vec.vizinhoDeVertice(1,2,true);
-    cout<<"Vertice: "<<o.first<<" Peso: "<<o.second<<endl;
-
-    pair <int, float> p = vec.vizinhoDeVertice(1,3,true);
-    cout<<"Vertice: "<<p.first<<" Peso: "<<p.second<<endl;
-
-/*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
-      
-    // Converting vector into a heap
-    // using make_heap()
-    make_heap(v1.begin(), v1.end(),  greater<>{});
-    cout << "The maximum element of heap is : ";
-    cout << v1.front() << endl;
+    /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
+        
+        // Converting vector into a heap
+        // using make_heap()
+        make_heap(v1.begin(), v1.end(),  greater<>{});
+        cout << "The maximum element of heap is : ";
+        cout << v1.front() << endl;
 
 
 
-    Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
- */    
+        Grafo grafo("Dados/grafo_W_4.txt",2,true,false);
+    */    
 
 
     /////////NÃO DELETAR DAQUI PRA BAIXO ////////////
