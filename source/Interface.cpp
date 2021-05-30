@@ -21,31 +21,10 @@
 
 int main(){
 
-    VectorListaAdjacencia Vetordelista;
     
+    Grafo grafo("./Dados/grafo_W_1.txt",1,true,false);
 
-    Vetordelista.setSize(4);
-
-
-    Vetordelista.addAresta(1,3,2.1);
-    Vetordelista.addAresta(3,1,2.1);        
-    Vetordelista.addAresta(1,4,1.7);
-    Vetordelista.addAresta(4,1,1.7);
-    Vetordelista.addAresta(2,3,4.1);
-    Vetordelista.addAresta(3,2,4.1);
-    Vetordelista.addAresta(4,2,1.5);
-    Vetordelista.addAresta(2,4,1.5);
-    Vetordelista.show(true);
-    pair<int, float> valor = Vetordelista.vizinhoDeVertice(5, 2, true);
-    cout<< "O vizinho de 2 na posição 2 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    valor = Vetordelista.vizinhoDeVertice(3, 2, true);
-    cout<< "O vizinho de 3 na posição 2 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    valor = Vetordelista.vizinhoDeVertice(4, 3, true);
-    cout<< "O vizinho de 4 na posição 3 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    valor = Vetordelista.vizinhoDeVertice(1, 1, true);
-    cout<< "O vizinho de 1 na posição 1 é "<<valor.first<<" com peso "<<valor.second<<endl;
-    
-    //Grafo grafo("source/grafo_W_1.txt",2,true,false);
+    grafo.Saida();
 
 
     /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
