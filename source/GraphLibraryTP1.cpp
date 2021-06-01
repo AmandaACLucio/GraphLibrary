@@ -245,11 +245,12 @@ vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
             nivel--;
             achou = false;
         }
-        retorno.push_back(pai);
-        retorno.push_back(niv);
-        retorno.push_back(filho);
-        return retorno;
+        
     }
+    retorno.push_back(pai);
+    retorno.push_back(niv);
+    retorno.push_back(filho);
+    return retorno;
 }
 
 int Grafo::Grau(int vertice)
