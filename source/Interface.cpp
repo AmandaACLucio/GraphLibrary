@@ -19,10 +19,10 @@
 #include "FuncoesAuxiliares.hpp"
 
 
-
 int main(){
 
     
+<<<<<<< HEAD
     Grafo grafo("Dados/grafo_W_5.txt",1,true,false);
 
     int randdd = grafo.numberNodes;
@@ -68,6 +68,25 @@ int main(){
     }
 
     cout<<"Tempo medio: "<<(tempoTotal/interacoes)<<endl;
+=======
+    //Grafo grafo("./Dados/rede_colaboracao.txt",1,true,false);
+    
+    Grafo grafo("./Dados/grafo_W_5.txt",2,true,false);
+
+    //grafo.Distancia(1,4340321);
+
+    //grafo.ComponentesConexas();
+
+
+/*     clock_t inicio, fim;
+    inicio= clock();
+    grafo.MST();
+    fim= clock();
+    double Tempo = (fim-inicio)*1000.0/CLOCKS_PER_SEC;
+    printf("Tempo gasto: %g ms.", Tempo); */
+
+
+>>>>>>> f6165b4067285be8b4b83d09d14af1af63b0121e
 
 
 }

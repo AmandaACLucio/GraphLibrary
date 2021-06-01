@@ -37,7 +37,7 @@ bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois){
     return false;       
 }
 
-bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois, float weight){
+bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois, double weight){
 
 
     if(weight<0){
@@ -47,9 +47,9 @@ bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois, float weight){
 
     if(inicializada==false){
 
-        matrizWeight = new float*[size+1];
+        matrizWeight = new double*[size+1];
         for (int i = 0; i < size+1; i++) {
-            matrizWeight[i] = new float[size+1];
+            matrizWeight[i] = new double[size+1];
             for (int j = 0; j < size+1; j++){
                 matrizWeight[i][j] = nan("");
             }
@@ -95,10 +95,10 @@ int MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
     }
 }
 
-pair <int,float> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho,  bool weight){
+pair <int,double> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho,  bool weight){
 
-    pair <int, float> dupla;
-    float pesoVertice;
+    pair <int, double> dupla;
+    double pesoVertice;
     int sizeValue = sizeVertice(vertice);
 
     if((posicaoVizinho>=sizeValue) || (vertice>=sizeValue)){

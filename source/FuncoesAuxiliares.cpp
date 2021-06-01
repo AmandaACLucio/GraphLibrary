@@ -163,3 +163,60 @@ vector<bool> MapeiaIntBool(vector<int> vertices, int sizeVetorMapeado, vector<bo
     }
     return verticesMapeados;
 }
+
+
+void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double custoTotal){
+
+    const char * filenameChar = filesaida.c_str();
+    ofstream arquivoCC (filenameChar);
+    int valueDois;
+    double pesoAresta;
+
+    if (arquivoCC.is_open())
+    {
+
+        arquivoCC<<pai.size()-1<<endl;
+
+        for(int valueUm=1; valueUm<pai.size(); valueUm++){
+            
+            valueDois=pai.at(valueUm).first;
+            pesoAresta=pai.at(valueUm).second;
+            if(valueDois!=-1){
+                arquivoCC<<valueUm<<" "<<valueDois<<" "<<pesoAresta<<endl;
+            }
+
+        }
+        
+        arquivoCC<<"Custo Total: "<<custoTotal<<endl;
+    }else{
+        cout << "Erro ao criar arquivo de Saída."<<endl;        
+    }
+    arquivoCC.close();
+}
+
+void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal){
+
+    const char * filenameChar = filesaida.c_str();
+    ofstream arquivoCC (filenameChar);
+    int valueDois;
+
+    if (arquivoCC.is_open())
+    {
+
+        arquivoCC<<pai.size()-1<<endl;
+
+        for(int valueUm=1; valueUm<pai.size(); valueUm++){
+            
+            valueDois=pai.at(valueUm);
+            if(valueDois!=-1){
+                arquivoCC<<valueUm<<" "<<valueDois<<endl;
+            }
+
+        }
+        
+        arquivoCC<<"Custo Total: "<<custoTotal<<endl;
+    }else{
+        cout << "Erro ao criar arquivo de Saída."<<endl;        
+    }
+    arquivoCC.close();
+}

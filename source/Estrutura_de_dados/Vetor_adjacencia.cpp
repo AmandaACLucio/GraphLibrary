@@ -13,7 +13,7 @@ NodeVec::NodeVec(int newData){
     data = newData;
 }
 
-NodeVec::NodeVec(int newData, float newWeight){
+NodeVec::NodeVec(int newData, double newWeight){
     data = newData;
     weight = newWeight;
 }
@@ -28,7 +28,7 @@ VetorAdjacencia::VetorAdjacencia(int node){
     sizeVetor = 1;
 }
 
-VetorAdjacencia::VetorAdjacencia(int node, float peso){
+VetorAdjacencia::VetorAdjacencia(int node, double peso){
     NodeVec nodeTemp(node, peso);
     nodes.push_back(nodeTemp);
     sizeVetor = 1;
@@ -64,7 +64,7 @@ bool VetorAdjacencia::add(int node){
     return false;
 }
 
-bool VetorAdjacencia::add(int node, float peso){
+bool VetorAdjacencia::add(int node, double peso){
 
 
     if(peso<0){
@@ -148,7 +148,7 @@ bool VectorVetorAdjacencia::addAresta(int valor1, int valor2){
     return resposta;
 }
 
-bool VectorVetorAdjacencia::addAresta(int valor1, int valor2, float weight){
+bool VectorVetorAdjacencia::addAresta(int valor1, int valor2, double weight){
     bool resposta; //precisa setar o tamanho antes
     resposta = vetorDeVetores.at(valor1).add(valor2, weight);
     return resposta;
@@ -173,11 +173,11 @@ int VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
     return vizinho;
 }
 
-pair <int,float> VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight){
+pair <int,double> VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight){
     
-    pair <int, float> dupla;
+    pair <int, double> dupla;
     int vizinho;
-    float pesoVertice;
+    double pesoVertice;
     int sizeValue = sizeVertice(vertice)-1;
 
     if(sizeValue==-1 || posicaoVizinho>=sizeValue){

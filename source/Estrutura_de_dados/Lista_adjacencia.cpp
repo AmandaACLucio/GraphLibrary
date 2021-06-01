@@ -11,7 +11,7 @@ NodeList::NodeList(int dataa){
     weight = 0;
 }
 
-NodeList::NodeList(int dataa, float newWeight){
+NodeList::NodeList(int dataa, double newWeight){
     this->next = NULL;
     this->data = dataa;
     weight = newWeight;
@@ -87,7 +87,7 @@ bool ListaAdjacencia::sortedInsert(int data){
     return false;
 }
 
-bool ListaAdjacencia::sortedInsert(int data, float newWeight){ 
+bool ListaAdjacencia::sortedInsert(int data, double newWeight){ 
 
     
     if(newWeight<0){
@@ -123,7 +123,7 @@ void ListaAdjacencia::show(){
     while (nodee != NULL)
     {
         int c = nodee->get();
-        float b = nodee->weight;
+        double b = nodee->weight;
         cout<<c<<" - Peso: "<<b<<" , ";
         nodee = nodee->get_next();
     }
@@ -167,7 +167,7 @@ NodeList* ListaAdjacencia::getNodePosition(int position){
     while (iterator<position)
     {
         int node = nextIterator->get();
-        float weightNode = nextIterator->weight;
+        double weightNode = nextIterator->weight;
         nextIterator = nextIterator->get_next();
         iterator++;
     }
@@ -193,7 +193,7 @@ bool VectorListaAdjacencia::addAresta(int valor1, int valor2){
     return resposta;
 }
 
-bool VectorListaAdjacencia::addAresta(int valor1, int valor2, float weight){
+bool VectorListaAdjacencia::addAresta(int valor1, int valor2, double weight){
     bool resposta; //precisa setar o tamanho antes
     resposta = vetorDeListas.at(valor1).sortedInsert(valor2, weight);
     return resposta;
@@ -207,7 +207,7 @@ void VectorListaAdjacencia::show(bool weight){
 }
 
 int VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
-    pair <int, float> dupla;
+    pair <int, double> dupla;
     int vizinho;
     int sizeValue = sizeVertice(vertice);
 
@@ -221,11 +221,11 @@ int VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho){
     return vizinho;
 }
 
-pair <int,float> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight){
+pair <int,double> VectorListaAdjacencia::vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight){
 
-    pair <int, float> dupla;
+    pair <int, double> dupla;
     int vizinho;
-    float pesoVertice;
+    double pesoVertice;
     int sizeValue = sizeVertice(vertice);
 
     if(sizeValue ==-1 || posicaoVizinho>=sizeValue){

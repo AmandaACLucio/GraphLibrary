@@ -38,5 +38,7 @@ vector<ListaAdjacencia> Popular(vector<ListaAdjacencia> vetorAuxiliar, int ultim
 vector<VetorAdjacencia> Popular(vector<VetorAdjacencia> vetorAuxiliar, int ultimoValor, int valorAtual);
 
 vector<bool> MapeiaIntBool(vector<int> vertices, int sizeVetorMapeado, vector<bool> verticesMapeados);
+void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double custoTotal);
+void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal);
 
 #endif

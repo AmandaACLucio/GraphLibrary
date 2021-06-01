@@ -2,7 +2,6 @@
 #include <cstdio>
 #include <cmath>
 #include <vector>
-#include <cstdlib>
 #include <fstream>
 #include <map>
 #include <stack>
@@ -25,7 +24,6 @@ Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
     peso = newPeso;
     numberNodes = 0;
     hasNode;
-    cout<<"Construtor"<<endl;
     estruturaEscolhida = estrutura;
     if(estrutura==1)  estruturaGrafo = new VectorListaAdjacencia();
     else if(estrutura==2) estruturaGrafo = new VectorVetorAdjacencia();
@@ -36,18 +34,21 @@ Grafo::Grafo(string caminho, int estrutura, bool newPeso, bool newDirecionado){
 
 void Grafo::Entrada(string filename)
 {
-    cout<<"Entrada"<<endl;
     int maior = 0;
     const char * filenameChar = filename.c_str();
     ifstream arquivoEntrada(filenameChar); // Abri arquivo para leitura
     int quantidadeDeVertices, valorUm, valorDois;
-    float newPeso;
+    double newPeso;
     bool realizouAdicao;
+    double somaPeso=0;
 
     if (arquivoEntrada.is_open()) {
 
         arquivoEntrada >> numberNodes;
+<<<<<<< HEAD
         cout<<"numberNodes "<<numberNodes<<endl;
+=======
+>>>>>>> f6165b4067285be8b4b83d09d14af1af63b0121e
 
         estruturaGrafo->setSize(numberNodes);
 
@@ -68,18 +69,16 @@ void Grafo::Entrada(string filename)
                         numberArestas+=1;
                         graus[valorUm]=graus[valorUm]+1;
                         graus[valorDois]=graus[valorDois]+1;
+                        somaPeso+=newPeso;
                     }
                 }
             }
-            cout<<"Valor maior = "<<maior<<endl;                         
+            cout<<somaPeso<<endl;
         }else{
             while(arquivoEntrada>>valorUm>>valorDois){
-                cout<<"Sem peso"<<endl;
                 
                 if(valorUm!=valorDois){
 
-                    cout<<"valorUM"<<valorUm<<endl;
-                    cout<<"valorDois"<<valorDois<<endl;
 
                     //se fizer a adição teremos um true
                     realizouAdicao = estruturaGrafo->addAresta(valorUm, valorDois);
@@ -124,11 +123,8 @@ void Grafo::Saida(string fileSaida)
 
 
     grauMinimo=grausList.at(0);
-    cout<<"ponto 1.1"<<endl;
     grauMaximo=grausList.at(grausList.size()-1);
-    cout<<"ponto 1.2"<<endl;
     grauMedio = sumGraus/numberNodes;
-    cout<<"ponto 2"<<endl;
     
     if(numberNodes%2==1){
         pontoMediana=(numberNodes-1)/2;
@@ -262,16 +258,18 @@ int Grafo::Grau(int vertice)
 }
 
 
-float Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
+double Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
 {
     //se não for da mesma componente retorna -1 = infinito
     vector<int> nivel;
-    float distancia;
+    vector<double> distancias;
+    double distancia;
 
     if(MesmaComponente(nodeUm, nodeDois)){
 
-        if(peso){            
-            distancia = Dijkstra(nodeUm, nodeDois).first;
+        if(peso){
+            distancias = Dijkstra(nodeUm, nodeDois).second;
+            distancia = distancias.at(nodeDois);
         }else{
             nivel =  BFS(nodeUm).at(1);
             distancia = nivel.at(nodeDois);
