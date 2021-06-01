@@ -22,7 +22,6 @@
 int main(){
 
     
-<<<<<<< HEAD
     Grafo grafo("Dados/grafo_W_5.txt",1,true,false);
 
     int randdd = grafo.numberNodes;
@@ -68,7 +67,6 @@ int main(){
     }
 
     cout<<"Tempo medio: "<<(tempoTotal/interacoes)<<endl;
-=======
     //Grafo grafo("./Dados/rede_colaboracao.txt",1,true,false);
     
     Grafo grafo("./Dados/grafo_W_5.txt",2,true,false);
@@ -86,10 +84,6 @@ int main(){
     printf("Tempo gasto: %g ms.", Tempo); */
 
 
->>>>>>> f6165b4067285be8b4b83d09d14af1af63b0121e
-
-
-}
     /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};
         
         // Converting vector into a heap
