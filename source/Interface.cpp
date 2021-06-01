@@ -22,53 +22,6 @@
 int main(){
 
     
-<<<<<<< HEAD
-    Grafo grafo("Dados/grafo_W_5.txt",1,true,false);
-
-    int randdd = grafo.numberNodes;
-    clock_t inicio, fim;
-    double tempoTotal;
-    int interacoes = 10;
-
-    vector<clock_t> tempos;
-    
-    
-    int arr[] = { 10, 20, 30, 40, 50 };
-  
-    for (int x : arr){
-        inicio= clock();
-        int s = grafo.Excentricidade(x);
-        fim= clock();
-        double time_spent = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout<<"Rodou a excentricidade do vertice "<<x<<" em "<<time_spent<<" segundos - Resultado: "<<s<<endl;
-    }
-
-
-
-
-
-
-
-
-
-
-
-}
-/*
-    for (int i = 0; i < interacoes; i++)
-    {
-        inicio= clock();
-        int aleatorio = rand() % randdd;
-        grafo.Excentricidade(aleatorio);
-        fim= clock();
-        double time_spent = (double)(fim - inicio) / CLOCKS_PER_SEC;
-        cout<<"Rodou a excentricidade do vertice "<<aleatorio<<" em "<<time_spent<<" segundos"<<endl;
-        tempos.push_back(time_spent);
-        tempoTotal += time_spent;
-    }
-
-    cout<<"Tempo medio: "<<(tempoTotal/interacoes)<<endl;
-=======
     //Grafo grafo("./Dados/rede_colaboracao.txt",1,true,false);
     
     Grafo grafo("./Dados/grafo_W_5.txt",2,true,false);
@@ -86,7 +39,6 @@ int main(){
     printf("Tempo gasto: %g ms.", Tempo); */
 
 
->>>>>>> f6165b4067285be8b4b83d09d14af1af63b0121e
 
 
 }
