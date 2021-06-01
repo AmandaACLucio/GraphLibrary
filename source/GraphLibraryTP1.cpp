@@ -49,8 +49,6 @@ void Grafo::Entrada(string filename)
         arquivoEntrada >> numberNodes;
         cout<<"numberNodes "<<numberNodes<<endl;
 
-        getchar();
-
         estruturaGrafo->setSize(numberNodes);
 
         if (peso) {
