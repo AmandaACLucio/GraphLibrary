@@ -18,13 +18,26 @@
 #include "FuncoesAuxiliares.hpp"
 
 
-
 int main(){
 
     
-    Grafo grafo("./Dados/teste2.txt",1,true,false);
+    //Grafo grafo("./Dados/rede_colaboracao.txt",1,true,false);
     
-    cout<<grafo.Excentricidade(1);
+    Grafo grafo("./Dados/grafo_W_5.txt",2,true,false);
+
+    //grafo.Distancia(1,4340321);
+
+    //grafo.ComponentesConexas();
+
+
+/*     clock_t inicio, fim;
+    inicio= clock();
+    grafo.MST();
+    fim= clock();
+    double Tempo = (fim-inicio)*1000.0/CLOCKS_PER_SEC;
+    printf("Tempo gasto: %g ms.", Tempo); */
+
+
 
 
     /*     vector<int> v1 = {20, 30, 40, 25, 15, 50};

@@ -12,7 +12,7 @@ class MatrizAdjacencia: public EstruturaDeDados
 {
     //size_t numberNodes;
     bool** matriz;
-    float** matrizWeight;
+    double** matrizWeight;
     bool inicializada=false; //se a matriz já foi inicializada
 
     public:
@@ -20,10 +20,10 @@ class MatrizAdjacencia: public EstruturaDeDados
         MatrizAdjacencia(int numeroVertices);
         void setSize(int numeroVertices);
         bool addAresta(int verticeUm, int verticeDois);
-        bool addAresta(int valor1, int valor2, float weight);
+        bool addAresta(int valor1, int valor2, double weight);
         void show(bool weight);
         int vizinhoDeVertice(int vertice, int posicaoVizinho);        
-        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight);
+        pair <int,double> vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight);
         virtual int sizeVertice(int vertice);
 };
 

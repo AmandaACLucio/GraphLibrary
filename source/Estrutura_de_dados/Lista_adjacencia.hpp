@@ -14,10 +14,10 @@ class NodeList
         //NodeList* prior;
         NodeList* next;
         int data;
-        float weight;
+        double weight;
 
         NodeList(int dataa);
-        NodeList(int dataa, float weight);
+        NodeList(int dataa, double weight);
         void set(int i);
         int get();
         NodeList* get_next();        
@@ -44,7 +44,7 @@ class ListaAdjacencia
         NodeList* getNodePosition(int position);
         NodeList* getTop();
         bool sortedInsert(int val);
-        bool sortedInsert(int val, float newWeight);
+        bool sortedInsert(int val, double newWeight);
 };
 
 class VectorListaAdjacencia: public EstruturaDeDados
@@ -56,10 +56,10 @@ class VectorListaAdjacencia: public EstruturaDeDados
         //VectorListaAdjacencia(int newSizeVector);
         void setSize(int newSizeVector);
         bool addAresta(int valor1, int valor2);
-        bool addAresta(int valor1, int valor2, float weight);
+        bool addAresta(int valor1, int valor2, double weight);
         void show(bool weight);
         int vizinhoDeVertice(int vertice, int posicaoVizinho);        
-        pair <int,float> vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight);
+        pair <int,double> vizinhoDeVertice(int vertice, int posicaoVizinho, bool weight);
         int sizeVertice(int vertice);
 };
 #endif

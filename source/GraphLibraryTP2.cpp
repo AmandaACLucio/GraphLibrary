@@ -18,18 +18,16 @@
 using namespace std;
 
 
-pair<float, vector<float>> Grafo::Dijkstra(int nodeUm, int nodeDois, string filesaida){
+pair<double, vector<double>> Grafo::Dijkstra(int nodeUm, int nodeDois, string filesaida){
     
     vector<bool> explorados;
-    pair<float, vector<float>> retorno;
-    set<pair<float, int>> distancia; //first 
-    vector<pair<int,float>> pai; 
-    vector<int> nivel;
-    vector<float> distanciaOrigem; 
+    pair<double, vector<double>> retorno;
+    set<pair<double, int>> distancia; //Acumula vetores descobertos e não explorados - first ->vertice, second ->peso 
+    vector<pair<int,double>> pai; //para construção do resultado
+    vector<double> distanciaOrigem; 
 
     for (int j = 0; j < numberNodes+1; j++){
         distanciaOrigem.push_back(INFINITO);
-        nivel.push_back(0);
         pai.push_back({0, 0});
         explorados.push_back(false);
     }
@@ -38,11 +36,11 @@ pair<float, vector<float>> Grafo::Dijkstra(int nodeUm, int nodeDois, string file
     distancia.insert({0, nodeUm});
 
     pai.at(nodeUm).first = 0;
-    pai.at(nodeUm).second = nan("");
+    pai.at(nodeUm).second = nan(""); //vertíce RAIZ do grafo
 
     while (!distancia.empty())
     {
-        int minVertice = distancia.begin()->second;
+        int minVertice = distancia.begin()->second; //vertice com menor peso
         int minPeso = distancia.begin()->first;
 
         distancia.erase(distancia.begin());
@@ -54,19 +52,19 @@ pair<float, vector<float>> Grafo::Dijkstra(int nodeUm, int nodeDois, string file
         for (int i = 0; i < endFor; i++)
         {
             //caso não tenho um viznho na posição i, a função vizinhoDeVertice retorna {-1, NAN}
-            pair<int, float> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
+            pair<int, double> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
 
             if(vizinho.first == -1){
                 cout<< "Loop fora de range"<<endl;
             }
+
+            //se existe o vizinho, ele ainda não foi explorado e a sua distancia da origem é maior que a distância gerada pela descoberto do vertice minVertice
 
             if (vizinho.first !=-1 && !explorados[vizinho.first] && (distanciaOrigem.at(vizinho.first)> (distanciaOrigem.at(minVertice) + vizinho.second)) )
             {
 
                 pai.at(vizinho.first).first=minVertice;
                 pai.at(vizinho.first).second=vizinho.second;
-
-                nivel.at(vizinho.first)+=1;
 
                 distanciaOrigem.at(vizinho.first) = distanciaOrigem.at(minVertice) + vizinho.second;
 
@@ -76,10 +74,10 @@ pair<float, vector<float>> Grafo::Dijkstra(int nodeUm, int nodeDois, string file
         }   
     }
 
+    double custoTotal=distanciaOrigem.at(nodeDois);
 
-    float custoTotal=distanciaOrigem.at(nodeDois);
-
-    EscreveNovoGrafo(pai, nivel, filesaida, custoTotal);
+    //função para gerar txt com nome definido ou padrão
+    EscreveNovoGrafo(pai, filesaida, custoTotal);
 
     retorno.first= custoTotal;
     retorno.second = distanciaOrigem;
@@ -90,15 +88,13 @@ pair<float, vector<float>> Grafo::Dijkstra(int nodeUm, int nodeDois, string file
 
 void Grafo::MST(int inicio, string filesaida){
     
-    vector<int> nivel;
     vector<bool> explorados;
-    vector<pair<int,float>> pai;
-    set<pair<float, int>> distancia; //first ->vertice, second ->peso
-    float custoTotal = 0; 
+    vector<pair<int,double>> pai;
+    set<pair<double, int>> distancia; //first ->vertice, second ->peso - Acumula vetores descobertos e não explorados
+    double custoTotal = 0; 
 
     for (int vertice = 0; vertice < numberNodes+1; vertice++){
         pai.push_back({-1, INFINITO});
-        nivel.push_back(0);
         explorados.push_back(false);
     }
  
@@ -121,7 +117,7 @@ void Grafo::MST(int inicio, string filesaida){
         for (int i = 0; i < endFor; i++){
 
             //caso não tenho um viznho na posição i, a função vizinhoDeVertice retorna {-1, NAN}
-            pair<int, float> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
+            pair<int, double> vizinho = estruturaGrafo->vizinhoDeVertice(minVertice, i, true);
 
 
             if(vizinho.first == -1){
@@ -135,64 +131,31 @@ void Grafo::MST(int inicio, string filesaida){
                 pai.at(vizinho.first).first=minVertice;
                 pai.at(vizinho.first).second=vizinho.second;
 
-                nivel.at(vizinho.first)=nivel.at(minVertice)+1;
-
                 distancia.insert({vizinho.second, vizinho.first});
             }          
         }
-    
-
     }
 
     //calculo custo total da MST
 
     for(int i=0; i<pai.size(); i++){
-        if(pai.at(i).second != INFINITO){
+        if(pai.at(i).second != INFINITO && !isnan(pai.at(i).second)){
             custoTotal+=pai.at(i).second;
         }
     }
 
     cout<<"Custo Total: "<<custoTotal;
 
-    EscreveNovoGrafo(pai, nivel, filesaida, custoTotal);
+    EscreveNovoGrafo(pai, filesaida, custoTotal);
 
 }
 
-void Grafo::EscreveNovoGrafo(vector<pair<int,float>> pai, vector<int> nivel, string filesaida, int custoTotal){
-
-    const char * filenameChar = filesaida.c_str();
-    ofstream arquivoCC (filenameChar);
-    int valueUm, valueDois;
-    float pesoAresta;
-
-    if (arquivoCC.is_open())
-    {
-
-        arquivoCC<<nivel.size()-1<<endl;
-
-        for(int valueUm=1; valueUm<pai.size(); valueUm++){
-            
-            valueDois=pai.at(valueUm).first;
-            pesoAresta=pai.at(valueUm).second;
-            if(valueDois!=-1){
-                arquivoCC<<valueUm<<" "<<valueDois<<" "<<pesoAresta<<endl;
-            }
-
-        }
-        
-        arquivoCC<<"Custo Total: "<<custoTotal<<endl;
-    }else{
-        cout << "Erro ao criar arquivo de Saída."<<endl;        
-    }
-    arquivoCC.close();
-}
-
-float Grafo::Excentricidade(int vertice){
+double Grafo::Excentricidade(int vertice){
 
     bool mesmaComponente=false;
     int verticeDois=2;
-    float excentricidade=0;
-    vector<float> distanciaOrigem;
+    double excentricidade=0;
+    vector<double> distanciaOrigem;
 
     while(!mesmaComponente){
         if(verticeDois!=vertice){

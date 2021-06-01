@@ -17,7 +17,7 @@ int main()
     int infinito = 99999999;
     vector<bool> hasNode;
 
-    set<pair<float,int>> distancia; //fist: peso second: no
+    set<pair<double,int>> distancia; //fist: peso second: no
     vector<bool> s;
 
     distancia.insert({9,0});
