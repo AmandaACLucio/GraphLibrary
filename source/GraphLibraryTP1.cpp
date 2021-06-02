@@ -45,10 +45,6 @@ void Grafo::Entrada(string filename)
     if (arquivoEntrada.is_open()) {
 
         arquivoEntrada >> numberNodes;
-<<<<<<< HEAD
-        cout<<"numberNodes "<<numberNodes<<endl;
-=======
->>>>>>> f6165b4067285be8b4b83d09d14af1af63b0121e
 
         estruturaGrafo->setSize(numberNodes);
 
@@ -200,7 +196,7 @@ vector<vector<int>> Grafo::BFS(int raiz)
 }
 
 vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
-{/*
+{
     printf("Entrando na DFS\n");
     int nivel = 0;
     stack<int>  pilhaDfs; // salvar sequencia da DFS
@@ -228,7 +224,7 @@ vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
         
         for (int i = 0; i <= numberNodes+1; i++)
         {
-            if (!descobertos[i] && listaAdj[k].search(i))
+            if (!descobertos[i] && estruturaGrafo->vizinhoDeVertice(k,i))
             {
                 pilhaDfs.push(i);
                 pai.push_back(k);
@@ -249,7 +245,12 @@ vector<vector<int>> Grafo::DFS(int raiz) //DFS - Depth First Search
             nivel--;
             achou = false;
         }
-    }*/
+        
+    }
+    retorno.push_back(pai);
+    retorno.push_back(niv);
+    retorno.push_back(filho);
+    return retorno;
 }
 
 int Grafo::Grau(int vertice)
