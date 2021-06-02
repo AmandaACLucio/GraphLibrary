@@ -69,7 +69,6 @@ void Grafo::Entrada(string filename)
                     }
                 }
             }
-            cout<<somaPeso<<endl;
         }else{
             while(arquivoEntrada>>valorUm>>valorDois){
                 
@@ -89,9 +88,12 @@ void Grafo::Entrada(string filename)
             }
         }
 
+        entradaOk = 0;
+
         arquivoEntrada.close();
     }else{
         cout << "ERRO: arquivo não foi aberto ou não existe" << endl;
+        entradaOk = 1;
     }
 }
 

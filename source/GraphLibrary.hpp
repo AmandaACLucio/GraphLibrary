@@ -17,6 +17,7 @@ class Grafo
 
     int numberNodes;
     int numberArestas;
+    int entradaOk;
     vector<bool> hasNode;
     map<int, int> graus;
     bool direcionado;

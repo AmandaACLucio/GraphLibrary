@@ -144,7 +144,7 @@ void Grafo::MST(int inicio, string filesaida){
         }
     }
 
-    cout<<"Custo Total: "<<custoTotal;
+    cout<<"Custo Total: "<<custoTotal<<endl;
 
     EscreveNovoGrafo(pai, filesaida, custoTotal);
 
@@ -170,6 +170,8 @@ double Grafo::Excentricidade(int vertice){
             excentricidade = distanciaOrigem.at(i);
         }
     }
+
+    cout<<"O valor da excentricidade é "<<excentricidade<<endl;
 
     return excentricidade;
 
