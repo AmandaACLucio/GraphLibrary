@@ -1,7 +1,5 @@
-﻿<style>body {text-align: justify}</style>
-
-# Graph-Library
-Biblioteca construída em clang-x64 com c++17, sendo testado no compilador mingw64 por Amanda Lucio e Lucas Máximo.
+﻿# Graph-Library
+Biblioteca construída em clang-x64 com c++17, sendo compilado em mingw64 e executado Windows por Amanda Lucio e Lucas Máximo.
 
 ## Table of Contents:
 - [Como usar](#Como-usar)
@@ -102,19 +100,19 @@ Foram implementados vários métodos para a classe grafo. Temos:
 O BFS (Breadth First Search) pode percorrer o gráfico a partir de um determinado nó (início) e executar todos os nós conectados a este vértice. Esta função pode nos dar a árvore geradora, dando o pai (que descobriu o nó) e seu grau (grau do pai +1). Essa função também pode nos fornecer o caminho mais curto do início do nó até um vértice.
 
 ### DFS
-O DFS (Depth First Search) pode percorrer o gráfico como o [BFS] (# bfs), mas diferente desta, ele explora o vertíce mais recente e não o mais antigo. Desta forma, ela vai o mais longe possível em um galho e depois volta a um ponto fixo.
+O DFS (Depth First Search) pode percorrer o gráfico como o [BFS](#bfs), mas diferente desta, ele explora o vertíce mais recente e não o mais antigo. Desta forma, ela vai o mais longe possível em um galho e depois volta a um ponto fixo.
 
 ### Componentes Conexas
 Esta função nos dá o número de componentes conectados de um gráfico e o vértice que pertence a cada componente em um txt. A função funciona rodando um bfs simples em um vértice, e após, dentro de um loop for, é só verificar se o próximo foi visitado. Se sim, basta verificar o próximo. Se não, execute o bfs para este vértice. O processo até que todos os vertíces sejam avaliados.
 
 ### Diâmetro
-Esta função retorna o diâmetro de um gráfico (O caminho mínimo máximo entre dois vértices). Assim, a implementação consistiu em executar um [BFS] (# bfs) para cada vértice do grafo, e retornar o maior valor possível entre dois nós.
+Esta função retorna o diâmetro de um gráfico (O caminho mínimo máximo entre dois vértices). Assim, a implementação consistiu em executar um [BFS](#bfs) para cada vértice do grafo, e retornar o maior valor possível entre dois nós.
 
 ### Distância
 A distância é o caminho mais curto de um vértice a ao vértice b. Assim, a implementação consistiu em usar um simples [BFS](#bfs) (para grafos sem peso) e [Dijkstra](#Dijkstra) (para grafos com peso) e medir a distância entre a e b.
 
 ### Dijkstra
-O Dijkstra é uma forma de percorrer o gráfico como o [BFS] (# bfs), buscando o menor caminho. A diferença está no fato do algoritmo escolher o caminho mais curto entre um vértice e seus vizinhos através do peso. Buscando, desta forma, a aresta de menor peso. Essa implementação retorna no formato txt de grafo uma árvore com o menor caminho. Assim como o custo do menor caminho no fim desse arquivo. OBS: só viável se seu gráfico for conexo e seu peso for positivo.
+O Dijkstra é uma forma de percorrer o gráfico como o [BFS](#bfs), buscando o menor caminho. A diferença está no fato do algoritmo escolher o caminho mais curto entre um vértice e seus vizinhos através do peso. Buscando, desta forma, a aresta de menor peso. Essa implementação retorna no formato txt de grafo uma árvore com o menor caminho. Assim como o custo do menor caminho no fim desse arquivo. OBS: só viável se seu gráfico for conexo e seu peso for positivo.
 
 ### MST
 O algorítmo utilizado para construção da MST (Minimum Spanning Tree) foi o Prim. Ele funciona como o algoritmo de Dijkstra, a diferença está na comparação dos tamanhos, pois ao invés de comparar a distância da origem do vertíce com a distância da origem do vertíce mais o valor da aresta, se compara o peso da aresta registrado com o peso da aresta encontrado.
