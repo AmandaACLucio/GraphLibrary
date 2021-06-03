@@ -121,6 +121,11 @@ O algorítmo utilizado para construção da MST (Minimum Spanning Tree) foi o Pr
 
 Foi desenvolvida uma interface simples com menu para rodar o programa. Os resultados serão mostrados na pasta Resultados e seus grafos devem ser colocados na pasta dados. Para utilizar a interface, é necessário fazer uma configuração prévia no SO utilizado.
 
+- Prévia da Interface
+#
+ ![Interface](interface.png).
+ #
+
 - Windows: Para rodar o programa você pode utilizar a pasta no .vscode, alterando o caminho para seu diretório e para seu compilador no arquivos json task e settings. Para rodar, basta usar o atalho ctrl+shift+p e rodar a nova task.
 
 - Linux: Você pode utilizar o makefile para gerar o arquivo executável. Nesse caso, só precisa de utilizar o comando make interface.

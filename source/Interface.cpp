@@ -27,121 +27,90 @@ bool testaRaiz(int raiz){
 int main(){
 
     DIR *dir;
-    string fileEntrada, fileSaida, temPeso, ehDirecionado, nameFile;
+    string fileEntrada, fileSaida;
     vector<string> filesDados;
     struct dirent *lsdir;
     bool peso, direcao;
-    int estrutura, option=0, iteratoOption, raiz=1, nodeUm=1, nodeDois=1, entrada;
+    int estrutura, option=0, raiz=1, nodeUm=1, nodeDois=1, entrada, iterator=0;
 
-    cout<<"********** Biblioteca de Grafos **************"<<endl;
-    cout<<"Inicalmente escolha o arquivo que deseja abrir"<<endl;
+    vector<string> estruturas = {"ListaAdjacencia", "VetorAdjacencia", "MatrizAdjacencia"};
+    vector<string> options={"Mostrar Grafo", "Saída com análise", "Diâmetro", "DFS", "Componentes Conexas", "Distância", "MST", "Excentricidade", "Sair"};
+
+    cout<<endl;
+    cout<<"********** Biblioteca de Grafos **************"<<endl<<endl;
 
     dir = opendir("./Dados");
-    iteratoOption = 1;
 
     while ( ( lsdir = readdir(dir) ) != NULL )
     {
-        cout<<iteratoOption<<": "<<lsdir->d_name<<endl;
-        filesDados.push_back(lsdir->d_name);
-        iteratoOption++;
+        if(iterator>1)
+            filesDados.push_back(lsdir->d_name);
+        iterator++;
     }
 
     closedir(dir);
 
-    iteratoOption=filesDados.size();
-    option=filesDados.size()+1;
-    
-    while(option>iteratoOption){
-        cout<<"O numero do arquivo é? ";
-        cin>>option;
-    }
-
+    inputInterface("Inicalmente escolha o arquivo que deseja abrir", filesDados, option);
     fileEntrada = "./Dados/"+filesDados.at(option-1);
 
 
-    cout<<"Escolha uma estrutura"<<endl;
-    cout<<"1. Lista de Adjacência"<<endl;
-    cout<<"2. Vetor de Adjacência"<<endl;
-    cout<<"3. Matriz de Adjacência"<<endl;
+    inputInterface("Escolha uma estrutura", estruturas, estrutura);
 
-    cout<<"Qual o número da estrutura desejada? ";
-    cin>>estrutura;
-
-    cout<<"Seu grafo tem peso? (Sim/ Não) ";
-    cin>>temPeso;
-
-    if(temPeso=="Sim") peso=true;
-    else peso=false;
-
-    cout<<"Seu grafo é direcionado? (Sim/ Não) ";
-    cin>>ehDirecionado;
-
-    if(ehDirecionado=="Sim") direcao=true;
-    else direcao=false;
+    inputInterface("Seu grafo tem peso? (Sim/ Nao) ", peso);
+    inputInterface("Seu grafo é direcionado? (Sim/ Nao) ", direcao);
 
     Grafo newGrafo(fileEntrada,estrutura,peso,direcao);
     entrada = newGrafo.entradaOk;
 
-    vector<string> options={"Saída com análise", "Diâmetro", "DFS", "Componentes Conexas", "Distância", "MST", "Excentricidade", "Sair"};
-    
     if(entrada==0){
 
-        while(option!=options.size()){
-            cout<<"Escolha uma análise para o seu grafo:"<<endl;
-            for(int i=0; i<options.size(); i++){
-                cout<<i+1<<": "<<options.at(i)<<endl;;
-            }
-            cout<<"Qual é o número da opção? ";
-            cin>>option;
+        while(option<options.size()){
 
-            switch (option)
-            {
-            case 1:
-                newGrafo.Saida();
-                break;
-            
-            case 2:
-                newGrafo.Diametro();
-                break;
-            
-            case 3:
-                cout<<"Digite o valor da sua raiz: ";
-                cin>>raiz;
-                newGrafo.DFS(raiz);
-                break;
+            inputInterface("Escolha uma análise para o seu grafo:", options, option);
 
-            case 4:
-                cout<<"Escreva um nome para o arquivo de saída (o mesmo aparecerá em Resultados após a execução e não precisa colocar a extensão) ";
-                cin>>nameFile;
-                fileSaida="./Resultados/"+nameFile+".txt";
-                newGrafo.ComponentesConexas(fileSaida);
-                break;
+            switch (option){
 
-            case 5:
-                cout<<"Qual o primeiro vértice? ";
-                cin>>nodeUm;
-                cout<<endl<<"Qual o valor do segundo vértice? ";
-                cin>>nodeDois;
-                newGrafo.Distancia(nodeUm, nodeDois);
-                break;
-            
-            case 6:
-                cout<<"Digite o valor da sua raiz: ";
-                cin>>raiz;
-                cout<<"Escreva um nome para o arquivo de saída (o mesmo aparecerá em Resultados após a execução e não precisa colocar a extensão) ";
-                cin>>nameFile;
-                fileSaida="./Resultados/"+nameFile+".txt";
-                newGrafo.MST(raiz, fileSaida);
-                break;
-            
-            case 7:
-                cout<<"Digite o valor da o vertíce para o qual deseja calcular a excentricidade ";
-                cin>>raiz;
-                newGrafo.Excentricidade(raiz);
-                break;
+                case 1:
+                    newGrafo.estruturaGrafo->show(true);
+                    break;
+                    
+                case 2:
+                    newGrafo.Saida();
+                    break;
+                
+                case 3:
+                    newGrafo.Diametro();
+                    break;
+                
+                case 4:
+                    inputInterface("Digite o valor da sua raiz: ", raiz);
+                    newGrafo.DFS(raiz);
+                    break;
 
-            default:
-                break;
+                case 5:
+                    inputInterface("Escreva um nome para o arquivo de saída (o mesmo aparecerá em Resultados após a execução e não precisa colocar a extensão): ", fileSaida, "Resultados");
+                    newGrafo.ComponentesConexas(fileSaida);
+                    break;
+
+                case 6:
+                    inputInterface("Qual o primeiro vértice? ", nodeUm);
+                    inputInterface("Qual  o valor do segundo vértice? ", nodeDois);
+                    newGrafo.Distancia(nodeUm, nodeDois);
+                    break;
+                
+                case 7:
+                    inputInterface("Digite o valor da sua raiz: ", raiz);
+                    inputInterface("Escreva um nome para o arquivo de saída (o mesmo aparecerá em Resultados após a execução e não precisa colocar a extensão): ", fileSaida, "Resultados");
+                    newGrafo.MST(raiz, fileSaida);
+                    break;
+                
+                case 8:
+                    inputInterface("Digite o valor da o vertíce para o qual deseja calcular a excentricidade: ", raiz);
+                    newGrafo.Excentricidade(raiz);
+                    break;
+
+                default:
+                    break;
             }
         
         }

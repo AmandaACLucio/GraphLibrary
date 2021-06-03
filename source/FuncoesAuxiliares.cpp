@@ -228,7 +228,7 @@ bool verticeValido(int vertice){
     return false;
 }
 
-void inputInterface(string output, int input){
+void inputInterface(string output, int &input){
     cout<<output;
     cin>>input;
     cout<<endl;
@@ -241,8 +241,44 @@ void inputInterface(string output, int input){
     }    
 }
 
-void inputInterface(string output, string input){
+
+void inputInterface(string output, vector<string> input, int &opcao){
+
+    cout<<output;
+    cout<<endl;
+
+    for(int i=0; i<input.size(); i++){
+        cout<<i+1<<": "<<input.at(i)<<endl;;
+    }
+
+    cout<<endl;
+    inputInterface("Qual a opção escolhida? ", opcao);
+}
+
+void inputInterface(string output, bool &valor){
+
+    string input;
+
     cout<<output;
     cin>>input;
+
+    if(input=="Sim" || input=="S" ) valor=true;
+    else if(input=="Nao" || input=="N" ) valor=false;
+    else{
+        while(input!="Sim" && input!="S" && input!="Nao" && input!="N" ){
+            cout<<"O valor digitado não é válido. Digite novamente:"<<endl;
+            cout<<output;
+            cin>>input;
+        }
+    }
+}
+
+void inputInterface(string output, string &input, string pasta){
+
+    string nameFile;
+
+    cout<<output;
+    cin>>nameFile;
+    input = "./"+pasta+"/"+nameFile+".txt";;
     cout<<endl;
 }

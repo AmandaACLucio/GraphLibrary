@@ -97,25 +97,20 @@ pair <int,double> MatrizAdjacencia::vizinhoDeVertice(int vertice, int posicaoViz
     int sizeValue = sizeVertice(vertice);
 
     if((posicaoVizinho>=sizeValue) || (vertice>=sizeValue)){
-        cout<<endl<<"##### Entrou no if ######"<<endl;
         pesoVertice = nan("");
         dupla = {-1, pesoVertice};
     }else{
-        cout<<endl<<"##### Entrou no else primeiro if ######"<<endl;
 
         pesoVertice= matrizWeight[vertice][posicaoVizinho];
-        cout<<endl<<"##### Peso do vizinho no primeiro:  "<<pesoVertice<<endl;
         dupla = {posicaoVizinho, pesoVertice};
         return dupla;
     }
 
     if(isnan(matrizWeight[vertice][posicaoVizinho]) && isnan(matrizWeight[posicaoVizinho][vertice])){
-        cout<<endl<<"##### Entrou no if isnan ######"<<endl;
 
         pesoVertice= matrizWeight[vertice][posicaoVizinho];
         dupla = {-1, pesoVertice};
     }else{
-        cout<<endl<<"##### Entrou no else de  isnan ######"<<endl;
 
         pesoVertice= matrizWeight[vertice][posicaoVizinho];
         dupla = {posicaoVizinho, pesoVertice};

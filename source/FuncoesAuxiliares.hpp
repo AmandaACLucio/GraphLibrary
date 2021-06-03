@@ -43,7 +43,9 @@ void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal);
 
 bool verticeValido(int vertice);
 
-void inputInterface(string output, int input);
-void inputInterface(string output, string input);
+void inputInterface(string output, int &input);
+void inputInterface(string output, vector<string> input, int &opcao);
+void inputInterface(string output, bool &valor);
+void inputInterface(string output, string &input, string pasta);
 
 #endif
