@@ -27,15 +27,43 @@ Biblioteca construída em clang-x64 com c++17, sendo testado no compilador mingw
 A biblioteca é criada à partir da classe Grafos. Nesta foram adicionado métodos e atríbutos que facilitem a experiência do usuário. 
 ```shell
   $ tree
-  .
+
+  │   .gitignore
+  │   LICENSE
+  │   makefile
+  │   readme.md
+  │
   ├───.vscode
+  │       c_cpp_properties.json
+  │       extensions.json
+  │       launch.json
+  │       settings.json
+  │       tasks.json
+  │
   ├───Dados
+  │       example.txt
+  │
   ├───Resultados
+  │       example.txt
+  │
   └───source
+      │   FuncoesAuxiliares.cpp
+      │   FuncoesAuxiliares.hpp
+      │   GraphLibrary.hpp
+      │   GraphLibraryTP1.cpp
+      │   GraphLibraryTP2.cpp
+      │   Interface.cpp
+      │
       └───Estrutura_de_dados
-
+              Estrutura_de_dados.cpp
+              Estrutura_de_dados.hpp
+              Lista_adjacencia.cpp
+              Lista_adjacencia.hpp
+              Matriz_adjacencia.cpp
+              Matriz_adjacencia.hpp
+              Vetor_adjacencia.cpp
+              Vetor_adjacencia.hpp
 ```
-
 ### Atributos da classe
 A classe contém alguns atributos principais:
 
