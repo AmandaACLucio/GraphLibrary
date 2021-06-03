@@ -41,4 +41,6 @@ vector<bool> MapeiaIntBool(vector<int> vertices, int sizeVetorMapeado, vector<bo
 void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double custoTotal);
 void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal);
 
+bool verticeValido(int vertice);
+
 #endif

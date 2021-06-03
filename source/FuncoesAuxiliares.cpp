@@ -220,3 +220,10 @@ void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal){
     }
     arquivoCC.close();
 }
+
+bool verticeValido(int vertice){
+
+    if(vertice>0)
+        return true;
+    return false;
+}
