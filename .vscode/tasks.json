@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++.exe build active file",
+            //altera o path de command abaixo para o path para o seu executável g++
+            "command": "C:\\mingw64\\bin\\g++.exe", 
+            "args": [
+                "-g",
+                "source\\Estrutura_de_dados\\Lista_adjacencia.hpp",
+                "source\\Estrutura_de_dados\\Matriz_adjacencia.hpp",
+                "source\\Estrutura_de_dados\\Vetor_adjacencia.hpp",
+                "source\\Estrutura_de_dados\\Estrutura_de_dados.hpp",
+                "source\\FuncoesAuxiliares.hpp",
+                "source\\GraphLibrary.hpp",
+
+                "source\\Estrutura_de_dados\\Lista_adjacencia.cpp",
+                "source\\Estrutura_de_dados\\Matriz_adjacencia.cpp",
+                "source\\Estrutura_de_dados\\Vetor_adjacencia.cpp",
+                "source\\FuncoesAuxiliares.cpp",
+                "source\\GraphLibraryTP1.cpp",
+                "source\\GraphLibraryTP2.cpp",
+                "source\\Interface.cpp",
+                
+                "-o",
+                "GraphLibrary.exe"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+  }
