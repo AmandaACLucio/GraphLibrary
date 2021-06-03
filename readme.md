@@ -123,7 +123,7 @@ Foi desenvolvida uma interface simples com menu para rodar o programa. Os result
 
 - Prévia da Interface
 #
- ![Interface](interface.png).
+ ![Interface](.\interface.png).
  #
 
 - Windows: Para rodar o programa você pode utilizar a pasta no .vscode, alterando o caminho para seu diretório e para seu compilador no arquivos json task e settings. Para rodar, basta usar o atalho ctrl+shift+p e rodar a nova task.
