@@ -25,6 +25,16 @@ Biblioteca construída em clang-x64 com c++17, sendo testado no compilador mingw
 
 ## Como usar
 A biblioteca é criada à partir da classe Grafos. Nesta foram adicionado métodos e atríbutos que facilitem a experiência do usuário. 
+```shell
+  $ tree
+  .
+  ├───.vscode
+  ├───Dados
+  ├───Resultados
+  └───source
+      └───Estrutura_de_dados
+
+```
 
 ### Atributos da classe
 A classe contém alguns atributos principais:
