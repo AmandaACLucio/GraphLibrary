@@ -19,6 +19,11 @@
 #include "FuncoesAuxiliares.hpp"
 
 
+bool testaRaiz(int raiz){
+    if(raiz>0) return true;
+    return false;
+}
+
 int main(){
 
     DIR *dir;

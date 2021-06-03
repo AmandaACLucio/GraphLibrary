@@ -22,6 +22,7 @@ class Grafo
     map<int, int> graus;
     bool direcionado;
     bool peso;
+    bool valueNegativo;
 
     //1- lista 2-vetor 3-matriz
     int estruturaEscolhida;
