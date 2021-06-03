@@ -90,11 +90,6 @@ bool ListaAdjacencia::sortedInsert(int data){
 bool ListaAdjacencia::sortedInsert(int data, double newWeight){ 
 
     
-    if(newWeight<0){
-        cout<<"Peso negativo não inserido"<<endl;
-        return false;
-    }
-
     if(!search(data)){
 
         NodeList* node = new NodeList(data, newWeight);

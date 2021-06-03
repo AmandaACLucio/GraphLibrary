@@ -26,6 +26,13 @@ pair<double, vector<double>> Grafo::Dijkstra(int nodeUm, int nodeDois, string fi
     vector<pair<int,double>> pai; //para construção do resultado
     vector<double> distanciaOrigem; 
 
+    if(valueNegativo){
+        cout<<"Dijkstra não pode ser aplicado para grafos com peso negativo"<<endl;
+        retorno.first= 0;
+        retorno.second = {0};
+        return retorno;
+    }
+
     for (int j = 0; j < numberNodes+1; j++){
         distanciaOrigem.push_back(INFINITO);
         pai.push_back({0, 0});
@@ -91,7 +98,7 @@ void Grafo::MST(int inicio, string filesaida){
     vector<bool> explorados;
     vector<pair<int,double>> pai;
     set<pair<double, int>> distancia; //first ->vertice, second ->peso - Acumula vetores descobertos e não explorados
-    double custoTotal = 0; 
+    double custoTotal = 0;
 
     for (int vertice = 0; vertice < numberNodes+1; vertice++){
         pai.push_back({-1, INFINITO});

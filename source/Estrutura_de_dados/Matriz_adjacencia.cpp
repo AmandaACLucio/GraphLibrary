@@ -40,11 +40,6 @@ bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois){
 bool MatrizAdjacencia::addAresta(int verticeUm, int verticeDois, double weight){
 
 
-    if(weight<0){
-        cout<<"Peso negativo não inserido"<<endl;
-        return false;
-    }
-
     if(inicializada==false){
 
         matrizWeight = new double*[size+1];

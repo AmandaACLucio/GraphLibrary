@@ -51,6 +51,8 @@ void Grafo::Entrada(string filename)
         if (peso) {
             while(arquivoEntrada>>valorUm>>valorDois>>newPeso){
 
+                if(newPeso<0){valueNegativo=true;}
+
                 if(valorUm>maior){maior = valorUm;}
                 if(valorDois>maior){maior=valorDois;}
                 
