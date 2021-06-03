@@ -227,3 +227,8 @@ bool verticeValido(int vertice){
         return true;
     return false;
 }
+
+void inputInterface(string output, int input){
+    cout<<output;
+    cin>>input;
+}
