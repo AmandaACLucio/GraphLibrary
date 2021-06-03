@@ -1,5 +1,5 @@
 ﻿# Graph-Library
-Biblioteca construída em clang-x64 com c++17, sendo compilado em mingw64 e executado Windows por Amanda Lucio e Lucas Máximo.
+Biblioteca construída em clang-x64 com c++17, sendo compilado em mingw64 e executado em Windows por Amanda Lucio e Lucas Máximo.
 
 ## Table of Contents:
 - [Como usar](#Como-usar)
