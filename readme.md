@@ -1,4 +1,6 @@
-﻿# Graph-Library
+﻿<style>body {text-align: justify}</style>
+
+# Graph-Library
 Biblioteca construída em clang-x64 com c++17, sendo testado no compilador mingw64 por Amanda Lucio e Lucas Máximo.
 
 ## Table of Contents:
