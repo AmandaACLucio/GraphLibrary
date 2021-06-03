@@ -231,4 +231,18 @@ bool verticeValido(int vertice){
 void inputInterface(string output, int input){
     cout<<output;
     cin>>input;
+    cout<<endl;
+    while (!verticeValido(input)){
+        cout<<"Digite um valor válido"<<endl;
+        cout<<output;
+        cin>>input;
+        cout<<endl;
+
+    }    
+}
+
+void inputInterface(string output, string input){
+    cout<<output;
+    cin>>input;
+    cout<<endl;
 }
