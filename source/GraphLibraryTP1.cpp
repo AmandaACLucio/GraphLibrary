@@ -269,8 +269,9 @@ double Grafo::Distancia(int nodeUm, int nodeDois, string file) //Usar BFS
     vector<int> nivel;
     vector<double> distancias;
     double distancia;
+    //MesmaComponente(nodeUm, nodeDois)
 
-    if(MesmaComponente(nodeUm, nodeDois)){
+    if(true){
 
         if(peso){
             distancias = Dijkstra(nodeUm, nodeDois, file).second;

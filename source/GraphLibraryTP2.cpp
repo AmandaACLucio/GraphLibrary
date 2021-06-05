@@ -53,7 +53,6 @@ pair<double, vector<double>> Grafo::Dijkstra(int nodeUm, int nodeDois, string fi
         distancia.erase(distancia.begin());
         
         int endFor= estruturaGrafo->sizeVertice(minVertice);
-        cout<<"endFor: "<<endFor;
 
         explorados.at(minVertice) = true;
 
@@ -83,8 +82,6 @@ pair<double, vector<double>> Grafo::Dijkstra(int nodeUm, int nodeDois, string fi
     }
 
     double custoTotal=distanciaOrigem.at(nodeDois);
-
-    cout<<"cheguei"<<endl;
 
     //função para gerar txt com nome definido ou padrão: contém árvore, distância e percurso
     EscreveNovoGrafo(pai, filesaida, custoTotal, nodeUm, nodeDois);
