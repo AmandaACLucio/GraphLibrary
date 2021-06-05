@@ -5,7 +5,7 @@
             "type": "shell",
             "label": "g++.exe build active file",
             //altera o path de command abaixo para o path para o seu executável g++
-            "command":"C:\\MinGW\\bin\\g++.exe",
+            "command": "C:\\mingw64\\bin\\g++.exe", 
             "args": [
                 "-g",
                 "source\\Estrutura_de_dados\\Lista_adjacencia.hpp",
