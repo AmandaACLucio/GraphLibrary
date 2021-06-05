@@ -39,6 +39,7 @@ vector<VetorAdjacencia> Popular(vector<VetorAdjacencia> vetorAuxiliar, int ultim
 
 vector<bool> MapeiaIntBool(vector<int> vertices, int sizeVetorMapeado, vector<bool> verticesMapeados);
 void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double custoTotal);
+void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double custoTotal, int verticeInicial, int verticeFinal);
 void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal);
 
 bool verticeValido(int vertice);

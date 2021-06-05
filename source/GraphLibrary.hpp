@@ -36,7 +36,7 @@ class Grafo
     vector<vector<int>> BFS(int raiz);
     vector<vector<int>> DFS(int raiz);
     int Grau(int vertice);
-    double Distancia(int nodeUm, int nodeDois); //alterado para aceitar peso
+    double Distancia(int nodeUm, int nodeDois, string file); //alterado para aceitar peso
     void Diametro();
     vector<vector<int>> ComponentesConexas(string filesaida="./Resultados/ComponentesConexas.txt");
     bool MesmaComponente(int nodeUm, int nodeDois);

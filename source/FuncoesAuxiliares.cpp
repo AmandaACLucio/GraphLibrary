@@ -194,6 +194,56 @@ void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double cus
     arquivoCC.close();
 }
 
+void EscreveNovoGrafo(vector<pair<int,double>> pai, string filesaida, double custoTotal, int verticeInicial, int verticeFinal){
+
+    const char * filenameChar = filesaida.c_str();
+    ofstream arquivoCC (filenameChar);
+    int valueDois, paiAtual;
+    double pesoAresta, pesoAtual;
+    vector<pair<int,double>> pathReverse;
+
+    if (arquivoCC.is_open())
+    {
+
+        arquivoCC<<pai.size()-1<<endl;
+
+        for(int valueUm=1; valueUm<pai.size(); valueUm++){
+            
+            valueDois=pai.at(valueUm).first;
+            pesoAresta=pai.at(valueUm).second;
+            if(valueDois!=-1){
+                arquivoCC<<valueUm<<" "<<valueDois<<" "<<pesoAresta<<endl;
+            }
+
+        }
+      
+        arquivoCC<<"Comprimento do caminho: "<<custoTotal<<endl;
+        cout<<"Comprimento do caminho: "<<custoTotal<<endl;
+
+        paiAtual = verticeFinal;
+        pesoAtual = pai.at(paiAtual).second; //peso até o pai
+        while(paiAtual!= verticeInicial){
+            pathReverse.push_back({paiAtual, pesoAtual});
+            pesoAtual = pai.at(paiAtual).second;
+            paiAtual = pai.at(paiAtual).first;
+        }
+        pathReverse.push_back({paiAtual, pesoAtual});
+
+        arquivoCC<<"Descrição do caminho: ";
+        cout<<"[";
+        for(int i=(pathReverse.size()-1); i>=0; i--){
+            arquivoCC<<pathReverse.at(i).first;
+            cout<<pathReverse.at(i).first;
+            if(i>0) {arquivoCC<<"--"<<pathReverse.at(i).second<<"-->"; cout<<",";}
+        }
+        cout<<"]"<<endl;
+
+    }else{
+        cout << "Erro ao criar arquivo de Saída."<<endl;        
+    }
+    arquivoCC.close();
+}
+
 void EscreveNovoGrafo(vector<int> pai, string filesaida, double custoTotal){
 
     const char * filenameChar = filesaida.c_str();

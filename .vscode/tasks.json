@@ -24,7 +24,7 @@
                 "source\\Interface.cpp",
                 
                 "-o",
-                "GraphLibrary.exe"
+                "GraphLibrary3.exe"
             ],
             "problemMatcher": [
                 "$gcc"

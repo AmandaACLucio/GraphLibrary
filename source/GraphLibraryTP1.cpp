@@ -263,7 +263,7 @@ int Grafo::Grau(int vertice)
 }
 
 
-double Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
+double Grafo::Distancia(int nodeUm, int nodeDois, string file) //Usar BFS
 {
     //se não for da mesma componente retorna -1 = infinito
     vector<int> nivel;
@@ -273,7 +273,7 @@ double Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
     if(MesmaComponente(nodeUm, nodeDois)){
 
         if(peso){
-            distancias = Dijkstra(nodeUm, nodeDois).second;
+            distancias = Dijkstra(nodeUm, nodeDois, file).second;
             distancia = distancias.at(nodeDois);
         }else{
             nivel =  BFS(nodeUm).at(1);
@@ -281,8 +281,10 @@ double Grafo::Distancia(int nodeUm, int nodeDois) //Usar BFS
         }
 
         return distancia;
+    }else{
+        cout<<"Os vertíces não pertencem a um mesma componente"<<endl;
+        return -1;
     }
-    return -1;
 }
 
 void Grafo::Diametro(){

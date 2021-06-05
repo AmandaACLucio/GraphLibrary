@@ -107,7 +107,7 @@ bool VetorAdjacencia::search(int node){
 }
 
 int VetorAdjacencia::getSize(){
-    return sizeVetor+1;
+    return sizeVetor;
 }
 
 int VetorAdjacencia::searchPositionInsert(int node){
@@ -173,7 +173,7 @@ pair <int,double> VectorVetorAdjacencia::vizinhoDeVertice(int vertice, int posic
     pair <int, double> dupla;
     int vizinho;
     double pesoVertice;
-    int sizeValue = sizeVertice(vertice)-1;
+    int sizeValue = sizeVertice(vertice);
 
     if(sizeValue==-1 || posicaoVizinho>=sizeValue){
         pesoVertice = nan("");

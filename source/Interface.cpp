@@ -26,7 +26,19 @@ bool testaRaiz(int raiz){
 
 int main(){
 
-    DIR *dir;
+/*     VectorVetorAdjacencia teste;
+    teste.setSize(10);
+    teste.addAresta(1, 2, 5);
+    teste.addAresta(1, 3, 2);
+    teste.addAresta(1, 4, 1);
+    teste.addAresta(3, 2, 5);
+    cout<<teste.vizinhoDeVertice(1, 2, true).first;
+    teste.show(true);
+    cout<<"size"<<teste.sizeVertice(1);
+
+ */
+
+     DIR *dir;
     string fileEntrada, fileSaida;
     vector<string> filesDados;
     struct dirent *lsdir;
@@ -95,7 +107,8 @@ int main(){
                 case 6:
                     inputInterface("Qual o primeiro vértice? ", nodeUm);
                     inputInterface("Qual  o valor do segundo vértice? ", nodeDois);
-                    newGrafo.Distancia(nodeUm, nodeDois);
+                    inputInterface("Escreva um nome para o arquivo de saída (o mesmo aparecerá em Resultados após a execução e não precisa colocar a extensão): ", fileSaida, "Resultados");
+                    newGrafo.Distancia(nodeUm, nodeDois, fileSaida);
                     break;
                 
                 case 7:

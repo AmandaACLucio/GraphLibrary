@@ -76,7 +76,7 @@ A classe contém alguns atributos principais:
 Ao passar parâmetros para criação do objeto a inicialização chama o método entrada e cria um objeto do tipo [EstruturaDeDados](#Estrutura-de-Dados). A chamada será:
 
 Grafo(string pathOfFile, int estrutura, bool Peso, bool 
-Direcionado)
+Direcionado);
 
 ## Representações
 A biblioteca pode representar grafos usando Lista de Adjacência, Vetor de Adjacência e Matriz de Adjacência.
