@@ -26,6 +26,7 @@ bool testaRaiz(int raiz){
 
 int main(){
 
+<<<<<<< HEAD
 /*     VectorVetorAdjacencia teste;
     teste.setSize(10);
     teste.addAresta(1, 2, 5);
@@ -39,6 +40,10 @@ int main(){
  */
 
      DIR *dir;
+=======
+
+    DIR *dir;
+>>>>>>> 9211e7bfd9b04391b1e8f7304048e04de6859328
     string fileEntrada, fileSaida;
     vector<string> filesDados;
     struct dirent *lsdir;
