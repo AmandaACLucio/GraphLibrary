@@ -26,6 +26,30 @@ bool testaRaiz(int raiz){
 
 int main(){
 
+
+
+    int tamanho = 10;
+    VectorListaAdjacencia lista;
+    VectorVetorAdjacencia vector;
+
+    lista.setSize(tamanho);
+    vector.setSize(tamanho);
+
+    cout<<"***"<<endl;
+    vector.addAresta(4,5);
+    lista.addAresta(4,5);
+    cout<<"###"<<endl;
+
+    for (int i = 0; i < tamanho; i++)
+    {
+        cout<<"tamanho do vertice "<<i<<" na lista: "<<lista.sizeVertice(i)<<endl;
+        cout<<"tamanho do vertice "<<i<<" na vector: "<<vector.sizeVertice(i)<<endl<<endl;
+    }
+
+    cout<<lista.vizinhoDeVertice(4,5)<<endl;
+    cout<<vector.vizinhoDeVertice(4,5)<<endl;
+
+/*
     DIR *dir;
     string fileEntrada, fileSaida;
     vector<string> filesDados;
@@ -116,6 +140,6 @@ int main(){
         }
     }
 
-    return 0;
+    return 0;*/
 
 }

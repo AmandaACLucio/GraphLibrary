@@ -107,7 +107,7 @@ bool VetorAdjacencia::search(int node){
 }
 
 int VetorAdjacencia::getSize(){
-    return sizeVetor+1;
+    return sizeVetor;
 }
 
 int VetorAdjacencia::searchPositionInsert(int node){

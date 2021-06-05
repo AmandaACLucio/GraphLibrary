@@ -1,6 +1,0 @@
-Número de Vertíces: 9
-Número de Arestas: 12
-Grau Minimo: 1
-Grau Máximo: 5
-Grau Médio: 2
-Mediana de Grau: 3
