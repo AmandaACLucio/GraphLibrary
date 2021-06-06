@@ -5,6 +5,7 @@ Biblioteca construída em clang-x64 com c++17, sendo compilado em mingw64 e exec
 - [Como usar](#Como-usar)
   - [Atributos da classe](#Atributos-da-classe)
   - [Criação de objeto](#criacao-de-objetos)
+- [Como rodar](#Como-Rodar)
 - [Representações](#Representações)
   - [Estrutura de Dados](#Estrutura-de-Dados)
   - [Lista de Adjacência](#Lista-de-Adjacência)
@@ -19,7 +20,6 @@ Biblioteca construída em clang-x64 com c++17, sendo compilado em mingw64 e exec
   - [Dijkstra](#Dijkstra)
   - [MST](#MST)
   - [Excentricidade](#Excentricidade)
-- [Como rodar](#Como-Rodar)
 - [Estudos de Caso](#Estudos-de-Caso)
 
 
@@ -78,6 +78,19 @@ Ao passar parâmetros para criação do objeto a inicialização chama o método
 Grafo(string pathOfFile, int estrutura, bool Peso, bool 
 Direcionado);
 
+## Como rodar
+
+Foi desenvolvida uma interface simples com menu para rodar o programa. Os resultados serão mostrados na pasta Resultados e seus grafos devem ser colocados na pasta dados. Para utilizar a interface, é necessário fazer uma configuração prévia no SO utilizado.
+
+- Prévia da Interface
+
+ ![Interface](https://github.com/AmandaACLucio/GraphLibrary/blob/main/Interface.png).
+
+
+- Windows: Para rodar o programa você pode utilizar a pasta no .vscode, alterando o caminho para seu diretório e para seu compilador no arquivos json task e settings. Para rodar, basta usar o atalho ctrl+shift+p e rodar a nova task.
+
+- Linux: Você pode utilizar o makefile para gerar o arquivo executável. Nesse caso, só precisa de utilizar o comando make interface.
+
 ## Representações
 A biblioteca pode representar grafos usando Lista de Adjacência, Vetor de Adjacência e Matriz de Adjacência.
 
@@ -116,19 +129,6 @@ O Dijkstra é uma forma de percorrer o gráfico como o [BFS](#bfs), buscando o m
 
 ### MST
 O algorítmo utilizado para construção da MST (Minimum Spanning Tree) foi o Prim. Ele funciona como o algoritmo de Dijkstra, a diferença está na comparação dos tamanhos, pois ao invés de comparar a distância da origem do vertíce com a distância da origem do vertíce mais o valor da aresta, se compara o peso da aresta registrado com o peso da aresta encontrado.
-
-## Como rodar
-
-Foi desenvolvida uma interface simples com menu para rodar o programa. Os resultados serão mostrados na pasta Resultados e seus grafos devem ser colocados na pasta dados. Para utilizar a interface, é necessário fazer uma configuração prévia no SO utilizado.
-
-- Prévia da Interface
-
- ![Interface](https://github.com/AmandaACLucio/GraphLibrary/blob/main/Interface.png).
-
-
-- Windows: Para rodar o programa você pode utilizar a pasta no .vscode, alterando o caminho para seu diretório e para seu compilador no arquivos json task e settings. Para rodar, basta usar o atalho ctrl+shift+p e rodar a nova task.
-
-- Linux: Você pode utilizar o makefile para gerar o arquivo executável. Nesse caso, só precisa de utilizar o comando make interface.
 
 ## Estudos de Caso
 Abaixo você pode ver os grafos usados para estudo de caso:
